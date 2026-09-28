@@ -275,7 +275,7 @@ function ExpenseFormRowFields(props: {
           decimals={EXPENSE_FORM_AMOUNT_MAX_DECIMALS}
           onNumberChange={(value) => onPatch({ amount: value })}
           placeholder="0"
-          className="min-w-0 w-full bg-transparent font-montserrat text-sm font-medium outline-none placeholder:text-black/30"
+          className="min-w-0 w-full bg-transparent font-montserrat text-sm font-medium outline-none placeholder:text-black/30 border-none"
         />
       </DrawerFormField>
       <button
