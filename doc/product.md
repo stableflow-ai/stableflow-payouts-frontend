@@ -1,6 +1,6 @@
 # Product Map
 
-Stableflow Pay lets a signed-in business send stablecoin payouts across EVM, Near, Solana, Tron, and Zcash from a single paying wallet. Cross-chain routing goes through Near Intents (1Click) behind the backend. Native Zcash origin uses Noir Wallet instead of Near Intents.
+StableFlow Pay lets a signed-in business send stablecoin payouts across EVM, Near, Solana, Tron, and Zcash from a single paying wallet. Cross-chain routing goes through Near Intents (1Click) behind the backend. Native Zcash origin uses Noir Wallet instead of Near Intents.
 
 The backend is the **Payroll** API: every route in `src/api/` is built from `PAY_API_PREFIX`, which is `/v1/payroll`. Auth, hosted checkout (`/payments`), Payment by form (payables + `/payouts/submit`), Organizations, Team, History, Payroll / Expense / Bonus, Operations catalog and category dashboards, and Payment requests have live endpoints.
 
@@ -31,7 +31,7 @@ Only two areas are released: **Auth** and **Pay**. This document details the rel
 
 Files: `src/views/auth/`. Guards: `src/router/guards.tsx`. Session: `src/stores/auth.ts` + `src/lib/auth-session.ts`. API: [api.md](api.md).
 
-Auth screens share `AuthShell`: a blue brand panel (logo, headline, three feature titles with 32px icons, link to `/howitworks`) beside a light-gray form column. There is no white card on the right; forms sit on `#F6F6F6`. The layout stacks vertically below `md`. `AuthBetaBanner` sits above the login and register forms (`Pay. Stableflow is currently in beta.`). Google sign-in is on `/login` and invite step 1 when `VITE_GOOGLE_CLIENT_ID` is set (GIS `google.accounts.id`; `credential` is the JWT `id_token`).
+Auth screens share `AuthShell`: a blue brand panel (logo, headline, three feature titles with 32px icons, link to `/howitworks`) beside a light-gray form column. There is no white card on the right; forms sit on `#F6F6F6`. The layout stacks vertically below `md`. `AuthBetaBanner` sits above the login and register forms (`Pay. StableFlow is currently in beta.`). Google sign-in is on `/login` and invite step 1 when `VITE_GOOGLE_CLIENT_ID` is set (GIS `google.accounts.id`; `credential` is the JWT `id_token`).
 
 | Screen | Fields | Endpoint |
 | --- | --- | --- |

@@ -1,4 +1,4 @@
-# Stableflow Pay
+# StableFlow Pay
 
 Cross-chain stablecoin payouts for businesses. A signed-in account can send a single payout, import a batch from CSV or Google Sheets, track pending transfers, and export transaction history — paying from one wallet on EVM, Near, Solana, or Tron while each recipient is paid on their own chain.
 

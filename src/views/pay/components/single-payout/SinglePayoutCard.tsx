@@ -278,7 +278,7 @@ export function SinglePayoutCard(props: {
             decimals={AMOUNT_MAX_DECIMALS}
             onNumberChange={setAmount}
             placeholder="0"
-            className="min-w-0 flex-1 bg-transparent font-montserrat text-[26px] font-medium text-black outline-none placeholder:text-black/30"
+            className="min-w-0 flex-1 bg-transparent font-montserrat text-[26px] font-medium text-black outline-none placeholder:text-black/30 border-none"
           />
           <TokenSelectButton
             token={destToken}
