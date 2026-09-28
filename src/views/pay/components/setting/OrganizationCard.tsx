@@ -61,7 +61,7 @@ export function OrganizationCard(props: {
         <div>
           <h2 className="font-montserrat text-xl font-medium capitalize text-black">Organization</h2>
           <p className="mt-2 font-montserrat text-sm font-normal text-[#909090]">
-            Update how your organization appears in Pay.Stableflow
+            Update how your organization appears in Pay.StableFlow
           </p>
         </div>
         <TeamActionButtons onAddMember={onAddMember} onInvite={onInvite} />

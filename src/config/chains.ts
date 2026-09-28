@@ -1,5 +1,5 @@
 /**
- * Chain registry for Stableflow Pay payments.
+ * Chain registry for StableFlow Pay payments.
  * Runtime lists come from GET /v1/pay/config; this file keeps UI metadata
  * and a fail-open fallback.
  */

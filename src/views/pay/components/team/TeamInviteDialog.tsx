@@ -30,7 +30,7 @@ export function TeamInviteDialog(props: {
   return (
     <Dialog open={open} onClose={onClose} title="Invite">
       <p className="font-montserrat text-sm leading-6 text-[#606060]">
-        Share this link. A colleague can open it without logging in and create their Stableflow Pay account.
+        Share this link. A colleague can open it without logging in and create their StableFlow Pay account.
       </p>
       <div className="mt-4 flex items-center gap-2 rounded-[8px] border border-[#e3e3e3] bg-[#f6f6f6] px-3 py-2">
         <p className="min-w-0 flex-1 break-all font-montserrat text-xs text-black">{url}</p>
