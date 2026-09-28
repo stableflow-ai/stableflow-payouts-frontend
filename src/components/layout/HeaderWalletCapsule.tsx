@@ -20,12 +20,12 @@ export function HeaderWalletCapsule() {
         <button
           type="button"
           onClick={() => setDialogOpen(true)}
-          className="inline-flex h-10 items-center gap-2 rounded-[20px] border border-white bg-[#fdfdfd] pr-3 pl-1 shadow-[0_0_20px_rgba(0,0,0,0.06)]"
+          className="inline-flex h-9 items-center gap-2 rounded-[18px] border border-[#E3E3E3] bg-[#fdfdfd] pr-3 pl-1 shadow-[0_0_20px_rgba(0,0,0,0.06)]"
         >
           <img
             src={chainLogoUrl(HEADER_CHAIN_LOGO[kind])}
             alt=""
-            className="size-[30px] rounded-full object-cover"
+            className="size-6.5 rounded-full object-cover"
           />
           <span className="font-montserrat text-sm text-black">{formatAddress(address)}</span>
           {kind === "evm" || kind === "near" || kind === "solana" ? (

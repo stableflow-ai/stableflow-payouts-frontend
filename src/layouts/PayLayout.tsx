@@ -93,11 +93,11 @@ export function PayLayout() {
       </div>
       <PaySidebar />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-        <div className="relative flex h-[65px] shrink-0 items-center justify-between gap-3 border-b border-black/10 px-2 md:px-5 lg:px-[26px]">
+        <div className="relative flex h-[52px] shrink-0 items-center justify-between gap-3 border-b border-black/10 px-2 md:px-5 lg:px-[26px]">
           {showRequestTabs ? (
             <RequestPaymentTabs />
           ) : (
-            <h1 className="font-montserrat text-[20px] font-medium text-black">
+            <h1 className="font-montserrat text-[16px] font-medium text-black">
               {payTitleForPath(
                 pathname,
                 userRole(user),
