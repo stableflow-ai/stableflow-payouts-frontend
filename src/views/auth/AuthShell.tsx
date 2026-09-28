@@ -6,7 +6,7 @@ import { AUTH_PANEL_BG } from "./config";
 
 const MagicRings = lazy(() => import("@/components/magic-rings/MagicRings"));
 
-const STABLEFLOW_WORDMARK = getLogo("/stableflow/logos/logo-stableflow-full-light.svg");
+const STABLEFLOW_WORDMARK = getLogo("/stableflow/logos/logo-stableflow-full-light-2.svg");
 
 export function AuthShell({
   children,
