@@ -116,7 +116,7 @@ export function IntegrationCard() {
   }
 
   return (
-    <Card className="flex flex-col p-[30px]">
+    <Card className="flex flex-col p-[30px] w-full md:max-w-[600px] md:mx-auto">
       <h2 className="font-montserrat text-xl font-medium capitalize text-black">Integration</h2>
       <p className="mt-2 font-montserrat text-sm font-normal text-[#909090]">
         Select the notification integration
@@ -132,7 +132,7 @@ export function IntegrationCard() {
           <p className="mt-8 font-montserrat text-sm font-medium text-[#606060]">
             Channel of Notification
           </p>
-          <div className="mt-4 flex flex-wrap gap-4">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <IntegrationChannelCard
               title="Email"
               icon={<IconEmail className="h-[13px] w-[17px]" />}
@@ -156,7 +156,7 @@ export function IntegrationCard() {
             />
           </div>
           <p className="mt-8 font-montserrat text-sm font-medium text-[#606060]">Wallet Address</p>
-          <div className="mt-4 flex flex-wrap gap-4">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <IntegrationChannelCard
               title="EVM Address"
               config={draft.evm}

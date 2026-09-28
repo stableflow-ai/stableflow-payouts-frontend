@@ -29,7 +29,7 @@ import {
 } from "../team/utils";
 
 const FIELD_CLASS =
-  "h-10 w-full rounded-[6px] border border-[#e3e3e3] bg-[#f6f6f6] px-3 font-montserrat text-sm font-medium text-black outline-none placeholder:text-black/30";
+  "h-10 w-full rounded-[6px] border border-[#e3e3e3] bg-[#fff] px-3 font-montserrat text-sm font-medium text-black outline-none placeholder:text-black/30";
 
 export function ProfileCard() {
   const toast = useToast();
@@ -148,7 +148,7 @@ export function ProfileCard() {
   }
 
   return (
-    <Card className="flex flex-col p-[30px]">
+    <Card className="flex flex-col p-[30px] w-full md:max-w-[600px] md:mx-auto">
       <h2 className="font-montserrat text-xl font-medium capitalize text-black">Profile</h2>
       <p className="mt-2 font-montserrat text-sm font-normal text-[#909090]">Update your profile</p>
       <ProfileField label="Name">

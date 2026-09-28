@@ -26,6 +26,7 @@ import {
   isRequestPaymentPath,
   payTitleForPath,
 } from "@/views/pay/config";
+import { cn } from "@/lib/utils";
 
 export interface PayLayoutOutletContext {
   setHeaderExtra: (node: ReactNode) => void;
@@ -54,6 +55,7 @@ export function PayLayout() {
   const closeMenu = () => setMenuOpen(false);
   const orgName = organizationName(user) ?? "";
   const categoriesOpen = pathname === CATEGORIES_PATH;
+  const isCardPage = ["^/pay$", "^/pay/form$", "^/setting$", "^/setting/slack/callback$"].some((path) => new RegExp(path).test(pathname));
 
   function closeCategories() {
     const idx = (window.history.state as { idx?: number } | null)?.idx;
@@ -115,7 +117,12 @@ export function PayLayout() {
             </div>
           </div>
         </div>
-        <div className="min-h-0 flex-1 overflow-y-auto px-2 py-5 md:px-5 lg:px-[26px]">
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-y-auto px-2 pb-5 pt-5 md:px-5 lg:px-[26px]",
+            isCardPage ? "pt-25" : "",
+          )}
+        >
           {showModeTabs ? (
             <div className="mb-4">
               <PaymentModeTabs />
