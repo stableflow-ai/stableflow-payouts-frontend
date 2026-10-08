@@ -1,8 +1,8 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@stableflow/pay-ui/button";
 import { Icon2Right } from "@stableflow/pay-ui/icons/to-right";
-import { useRegisterMutation } from "@/hooks/use-auth-api";
+import { useRegisterMutation, useSendRegisterCodeMutation } from "@/hooks/use-auth-api";
 import useToast from "@/hooks/use-toast";
 import { AuthShell } from "./AuthShell";
 import {
@@ -10,6 +10,7 @@ import {
   AuthField,
   AuthPasswordField,
   authErrorMessage,
+  registerErrorMessage,
   AUTH_COMPACT_INPUT_CLASS,
   AUTH_FORM_CLASS,
   useTouchedFields,
@@ -19,18 +20,20 @@ import {
   AUTH_LINK_CLASS,
   AUTH_ONBOARDING_FORM_CLASS,
   AUTH_ONBOARDING_LABEL_CLASS,
+  CODE_MAX_LENGTH,
   EMAIL_MAX_LENGTH,
-  INVITE_CODE_MAX_LENGTH,
   LOGO_URL_MAX_LENGTH,
   NAME_MAX_LENGTH,
   ORGANIZATION_NAME_MAX_LENGTH,
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   REGISTER_STEP,
+  SEND_CODE_COOLDOWN_SECONDS,
+  SEND_CODE_TEXT_CLASS,
+  codeRuleError,
   confirmPasswordRuleError,
   createOrganizationFormError,
   emailRuleError,
-  inviteCodeRuleError,
   logoUrlRuleError,
   nameRuleError,
   organizationNameRuleError,
@@ -39,7 +42,7 @@ import {
 } from "./config";
 import { loginPathWithReturnTo, postAuthPath, returnToFromSearch } from "./return-to";
 
-const SIGN_UP_FIELDS = ["name", "email", "password", "confirmPassword", "inviteCode"] as const;
+const SIGN_UP_FIELDS = ["name", "email", "password", "confirmPassword", "code"] as const;
 const ORGANIZATION_FIELDS = ["organizationName", "logoUrl"] as const;
 
 export function RegisterView() {
@@ -48,6 +51,7 @@ export function RegisterView() {
   const returnTo = returnToFromSearch(params.toString());
   const toast = useToast();
   const registerMutation = useRegisterMutation();
+  const sendCodeMutation = useSendRegisterCodeMutation();
   const signUpTouched = useTouchedFields();
   const organizationTouched = useTouchedFields();
 
@@ -58,14 +62,40 @@ export function RegisterView() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [inviteCode, setInviteCode] = useState("");
+  const [code, setCode] = useState("");
+  const [cooldownLeft, setCooldownLeft] = useState(0);
   const [organizationName, setOrganizationName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
+
+  useEffect(() => {
+    if (cooldownLeft <= 0) return;
+    const timer = window.setInterval(() => {
+      setCooldownLeft((current) => (current <= 1 ? 0 : current - 1));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [cooldownLeft]);
+
+  const sendCode = async () => {
+    const ruleError = emailRuleError(email);
+    if (ruleError) {
+      toast.fail({ title: ruleError });
+      return;
+    }
+    try {
+      await sendCodeMutation.mutateAsync({ email: email.trim() });
+      setCooldownLeft(SEND_CODE_COOLDOWN_SECONDS);
+      toast.success({ title: "Verification code sent" });
+    } catch (cause) {
+      toast.fail({
+        title: authErrorMessage(cause, "Unable to send verification code"),
+      });
+    }
+  };
 
   const submitSignUp = (event: FormEvent) => {
     event.preventDefault();
     signUpTouched.touchAll(SIGN_UP_FIELDS);
-    if (registerFormError(name, email, password, confirmPassword, inviteCode)) return;
+    if (registerFormError(name, email, password, confirmPassword, code)) return;
     setStep(REGISTER_STEP.Organization);
   };
 
@@ -79,7 +109,7 @@ export function RegisterView() {
         name: name.trim(),
         email: email.trim(),
         password,
-        inviteCode: inviteCode.trim(),
+        code: code.trim(),
         organization: logo
           ? { name: organizationName.trim(), logo }
           : { name: organizationName.trim() },
@@ -87,7 +117,7 @@ export function RegisterView() {
       navigate(postAuthPath(session.user, returnTo), { replace: true });
     } catch (cause) {
       toast.fail({
-        title: authErrorMessage(cause, "Unable to create account"),
+        title: registerErrorMessage(cause, "Unable to create account"),
       });
       setStep(REGISTER_STEP.SignUp);
     }
@@ -244,25 +274,37 @@ export function RegisterView() {
           className="mt-5"
         />
         <AuthField
-          id="invite-code"
-          label="Invite code"
-          value={inviteCode}
+          id="register-code"
+          label="Verify Code"
+          value={code}
           onChange={(value) => {
-            signUpTouched.touch("inviteCode");
-            setInviteCode(value);
+            signUpTouched.touch("code");
+            setCode(value);
           }}
-          onBlur={() => signUpTouched.touch("inviteCode")}
-          error={signUpTouched.touched.inviteCode ? inviteCodeRuleError(inviteCode) : null}
-          placeholder="Invite code"
-          autoComplete="off"
-          maxLength={INVITE_CODE_MAX_LENGTH}
+          onBlur={() => signUpTouched.touch("code")}
+          error={signUpTouched.touched.code ? codeRuleError(code) : null}
+          placeholder="Code"
+          autoComplete="one-time-code"
+          maxLength={CODE_MAX_LENGTH}
+          trailing={
+            <button
+              type="button"
+              disabled={cooldownLeft > 0 || sendCodeMutation.isPending}
+              onClick={() => {
+                void sendCode();
+              }}
+              className={SEND_CODE_TEXT_CLASS}
+            >
+              {cooldownLeft > 0 ? `${cooldownLeft}s` : "Send Code"}
+            </button>
+          }
           className="mt-5"
         />
 
         <Button
           type="submit"
           size="lg"
-          disabled={Boolean(registerFormError(name, email, password, confirmPassword, inviteCode))}
+          disabled={Boolean(registerFormError(name, email, password, confirmPassword, code))}
           className="mt-7.5 w-full"
         >
           Continue

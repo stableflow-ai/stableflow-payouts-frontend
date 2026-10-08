@@ -32,7 +32,7 @@ export function SettingView() {
   }
 
   return (
-    <div className="mx-auto flex w-full flex-col gap-5">
+    <div className="mx-auto flex w-full flex-col gap-7.5">
       <ProfileCard />
       {isAdmin ? (
         <>

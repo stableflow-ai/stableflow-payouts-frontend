@@ -4,6 +4,7 @@
  *   POST /v1/payroll/auth/google/login
  *   POST /v1/payroll/auth/google/register
  *   POST /v1/payroll/auth/register
+ *   POST /v1/payroll/auth/register/code
  *   POST /v1/payroll/change-password
  *   POST /v1/payroll/reset-password
  *   POST /v1/payroll/reset-password/code
@@ -24,6 +25,7 @@ import {
   login,
   register,
   resetPassword,
+  sendRegisterCode,
   sendResetPasswordCode,
   updateMemberProfile,
   updateProfile,
@@ -121,6 +123,12 @@ export function useRegisterMutation() {
     onSuccess: (session) => {
       applySession(session.token, session.user);
     },
+  });
+}
+
+export function useSendRegisterCodeMutation() {
+  return useMutation({
+    mutationFn: sendRegisterCode,
   });
 }
 

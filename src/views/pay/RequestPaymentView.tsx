@@ -144,7 +144,7 @@ export function RequestPaymentView() {
 
   return (
     <>
-      <div className="flex w-full flex-col items-center">
+      <div className="flex w-full flex-col items-center pt-7">
         <h2 className="font-montserrat text-xl font-medium text-black">Request Payment</h2>
         <Card className="mt-6 w-full max-w-[600px] px-[30px] py-8">
           <div className="flex items-center gap-1">

@@ -10,7 +10,7 @@ import { createOrganizationFormError, LOGO_URL_MAX_LENGTH, ORGANIZATION_NAME_MAX
 import { TeamActionButtons } from "./TeamActionButtons";
 
 const FIELD_CLASS =
-  "h-10 w-full rounded-[6px] border border-[#e3e3e3] bg-[#f6f6f6] px-3 font-montserrat text-sm font-medium text-black outline-none placeholder:text-black/30";
+  "h-10 w-full rounded-[6px] border border-[#e3e3e3] bg-[#fff] px-3 font-montserrat text-sm font-medium text-black outline-none placeholder:text-black/30";
 
 export function OrganizationCard(props: {
   onAddMember: () => void;
@@ -56,15 +56,14 @@ export function OrganizationCard(props: {
   }
 
   return (
-    <Card className="flex flex-col p-[30px]">
+    <Card className="flex flex-col p-[30px] w-full md:max-w-[600px] md:mx-auto">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 className="font-montserrat text-xl font-medium capitalize text-black">Organization</h2>
           <p className="mt-2 font-montserrat text-sm font-normal text-[#909090]">
-            Update how your organization appears in Pay.StableFlow
+            Update how your organization appears in StableFlow | Payouts
           </p>
         </div>
-        <TeamActionButtons onAddMember={onAddMember} onInvite={onInvite} />
       </div>
       <label className="mt-6 block">
         <span className="font-montserrat text-sm font-medium text-[#606060]">Organization Name</span>
@@ -78,7 +77,7 @@ export function OrganizationCard(props: {
       </label>
       <label className="mt-6 block">
         <span className="font-montserrat text-sm font-medium text-[#606060]">Logo URL</span>
-        <span className="ml-2 font-montserrat text-xs font-normal text-[#909090]">(optional)</span>
+        <span className="ml-2 font-montserrat text-xs font-normal text-[#909090]">(Optional)</span>
         <input
           className={`${FIELD_CLASS} mt-2`}
           value={logoUrl}
@@ -87,6 +86,12 @@ export function OrganizationCard(props: {
           onChange={(event) => setLogoUrl(event.target.value)}
         />
       </label>
+      <TeamActionButtons
+        onAddMember={onAddMember}
+        onInvite={onInvite}
+        className="mt-7 w-full flex justify-between gap-4.5 flex-nowrap"
+        buttonClassName="w-full"
+      />
       <div className="mt-6 flex justify-end">
         <Button
           size={BUTTON_SIZE.Sm}

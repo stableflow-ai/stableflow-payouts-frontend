@@ -60,7 +60,6 @@ export interface GoogleLoginBody {
 export interface GoogleRegisterBody {
   idToken: string;
   name: string;
-  inviteCode: string;
   organization: RegisterOrganizationBody;
 }
 
@@ -82,11 +81,15 @@ export interface RegisterOrganizationBody {
   logo?: string;
 }
 
+export interface RegisterCodeBody {
+  email: string;
+}
+
 export interface RegisterBody {
   name: string;
   email: string;
   password: string;
-  inviteCode: string;
+  code: string;
   organization: RegisterOrganizationBody;
 }
 

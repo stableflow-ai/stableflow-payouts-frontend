@@ -26,6 +26,7 @@ import {
   isRequestPaymentPath,
   payTitleForPath,
 } from "@/views/pay/config";
+import { cn } from "@/lib/utils";
 
 export interface PayLayoutOutletContext {
   setHeaderExtra: (node: ReactNode) => void;
@@ -54,6 +55,7 @@ export function PayLayout() {
   const closeMenu = () => setMenuOpen(false);
   const orgName = organizationName(user) ?? "";
   const categoriesOpen = pathname === CATEGORIES_PATH;
+  const isCardPage = ["^/pay$", "^/pay/form$", "^/setting$", "^/setting/slack/callback$"].some((path) => new RegExp(path).test(pathname));
 
   function closeCategories() {
     const idx = (window.history.state as { idx?: number } | null)?.idx;
@@ -93,11 +95,11 @@ export function PayLayout() {
       </div>
       <PaySidebar />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-        <div className="relative flex h-[65px] shrink-0 items-center justify-between gap-3 border-b border-black/10 px-2 md:px-5 lg:px-[26px]">
+        <div className="relative flex h-[52px] shrink-0 items-center justify-between gap-3 border-b border-black/10 px-2 md:px-5 lg:px-[26px]">
           {showRequestTabs ? (
             <RequestPaymentTabs />
           ) : (
-            <h1 className="font-montserrat text-[20px] font-medium text-black">
+            <h1 className="font-montserrat text-[16px] font-medium text-black">
               {payTitleForPath(
                 pathname,
                 userRole(user),
@@ -115,7 +117,12 @@ export function PayLayout() {
             </div>
           </div>
         </div>
-        <div className="min-h-0 flex-1 overflow-y-auto px-2 py-5 md:px-5 lg:px-[26px]">
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-y-auto px-2 pb-5 pt-5 md:px-5 lg:px-[26px]",
+            isCardPage ? "pt-25" : "",
+          )}
+        >
           {showModeTabs ? (
             <div className="mb-4">
               <PaymentModeTabs />

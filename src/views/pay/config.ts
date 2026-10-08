@@ -10,11 +10,11 @@ import { IconOperations } from "@stableflow/pay-ui/icons/operations";
 import { IconOtcTreasury } from "@stableflow/pay-ui/icons/otc-treasury";
 import { IconOutsourcing } from "@stableflow/pay-ui/icons/outsourcing";
 import { IconOverview } from "@stableflow/pay-ui/icons/overview";
-import { IconPayment } from "@stableflow/pay-ui/icons/payment";
 import { IconPayroll } from "@stableflow/pay-ui/icons/payroll";
 import { IconProcurement } from "@stableflow/pay-ui/icons/procurement";
 import { IconSetting } from "@stableflow/pay-ui/icons/setting";
 import { IconTeam } from "@stableflow/pay-ui/icons/team";
+import { IconUp } from "@stableflow/pay-ui/icons/up";
 import type { IconProps } from "@stableflow/pay-ui/icons/types";
 import { AUTH_USER_ROLE, type AuthUserRole } from "@/types/auth";
 import { OPERATION_CATEGORY } from "@/types/operation";
@@ -80,7 +80,7 @@ export const PAY_NAV_ITEMS: readonly PayNavItem[] = [
     id: PAY_NAV_ID.Payment,
     label: "Pay",
     to: PAY_PATH,
-    icon: IconPayment,
+    icon: IconUp,
     match: [PAY_PATH, PAY_FORM_PATH],
   },
   {
