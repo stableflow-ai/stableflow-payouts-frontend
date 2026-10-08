@@ -11,6 +11,7 @@ import {
   type ChangePasswordBody,
   type LoginBody,
   type RegisterBody,
+  type RegisterCodeBody,
   type RegisterUserBody,
   type GoogleLoginBody,
   type GoogleRegisterBody,
@@ -119,7 +120,6 @@ export function googleRegisterRequestBody(body: GoogleRegisterBody) {
   const logo = body.organization.logo?.trim();
   return {
     id_token: body.idToken,
-    inviteCode: body.inviteCode.trim(),
     name: body.name.trim(),
     organization: logo
       ? { name: body.organization.name.trim(), logo }
@@ -176,6 +176,14 @@ export async function register(body: RegisterBody) {
       auth: false,
     }),
   );
+}
+
+export function sendRegisterCode(body: RegisterCodeBody) {
+  return http<void>(`${PAY_API_PREFIX}/auth/register/code`, {
+    method: "POST",
+    body,
+    auth: false,
+  });
 }
 
 function omitEmpty(value: string | undefined): string | undefined {

@@ -37,7 +37,6 @@ export const REGISTER_STEP = {
 export const NAME_MAX_LENGTH = 50;
 export const ORGANIZATION_NAME_MAX_LENGTH = 50;
 export const LOGO_URL_MAX_LENGTH = 500;
-export const INVITE_CODE_MAX_LENGTH = 10;
 export const EMAIL_MAX_LENGTH = 100;
 export const CODE_MAX_LENGTH = 20;
 export const PASSWORD_MIN_LENGTH = 8;
@@ -92,15 +91,6 @@ export function passwordRuleError(password: string): string | null {
   return null;
 }
 
-export function inviteCodeRuleError(inviteCode: string): string | null {
-  const trimmed = inviteCode.trim();
-  if (!trimmed) return "Invite code is required";
-  if (trimmed.length > INVITE_CODE_MAX_LENGTH) {
-    return `Invite code must be at most ${INVITE_CODE_MAX_LENGTH} characters`;
-  }
-  return null;
-}
-
 export function confirmPasswordRuleError(
   password: string,
   confirmPassword: string,
@@ -117,14 +107,14 @@ export function registerFormError(
   email: string,
   password: string,
   confirmPassword: string,
-  inviteCode: string,
+  code: string,
 ): string | null {
   return (
     nameRuleError(name) ??
     emailRuleError(email) ??
     passwordRuleError(password) ??
     confirmPasswordRuleError(password, confirmPassword) ??
-    inviteCodeRuleError(inviteCode)
+    codeRuleError(code)
   );
 }
 
@@ -207,13 +197,8 @@ export function inviteRegisterFormError(
 
 export function googleAdminRegisterFormError(
   name: string,
-  inviteCode: string,
   organizationName: string,
   logoUrl: string,
 ): string | null {
-  return (
-    nameRuleError(name) ??
-    inviteCodeRuleError(inviteCode) ??
-    createOrganizationFormError(organizationName, logoUrl)
-  );
+  return nameRuleError(name) ?? createOrganizationFormError(organizationName, logoUrl);
 }

@@ -136,12 +136,10 @@ describe("googleRegisterRequestBody", () => {
       googleRegisterRequestBody({
         idToken: "id.jwt",
         name: " Ada ",
-        inviteCode: " abc ",
         organization: { name: " Eureka ", logo: "  " },
       }),
     ).toEqual({
       id_token: "id.jwt",
-      inviteCode: "abc",
       name: "Ada",
       organization: { name: "Eureka" },
     });

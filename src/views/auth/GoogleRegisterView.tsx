@@ -16,12 +16,10 @@ import {
 import {
   AUTH_LINK_ACCENT_CLASS,
   AUTH_LINK_CLASS,
-  INVITE_CODE_MAX_LENGTH,
   LOGO_URL_MAX_LENGTH,
   NAME_MAX_LENGTH,
   ORGANIZATION_NAME_MAX_LENGTH,
   googleAdminRegisterFormError,
-  inviteCodeRuleError,
   logoUrlRuleError,
   nameRuleError,
   organizationNameRuleError,
@@ -30,7 +28,7 @@ import { postAuthPath } from "./return-to";
 import { useGoogleAuthPendingOrRedirect } from "./use-google-auth-pending";
 import { cn } from "@/lib/utils";
 
-const REGISTER_FIELDS = ["name", "inviteCode", "organizationName", "logoUrl"] as const;
+const REGISTER_FIELDS = ["name", "organizationName", "logoUrl"] as const;
 
 export function GoogleRegisterView() {
   const navigate = useNavigate();
@@ -41,7 +39,6 @@ export function GoogleRegisterView() {
   const { touched, touch, touchAll } = useTouchedFields();
 
   const [name, setName] = useState("");
-  const [inviteCode, setInviteCode] = useState("");
   const [organizationName, setOrganizationName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
 
@@ -53,7 +50,7 @@ export function GoogleRegisterView() {
   const submit = async (event: FormEvent) => {
     event.preventDefault();
     touchAll(REGISTER_FIELDS);
-    if (googleAdminRegisterFormError(name, inviteCode, organizationName, logoUrl) || !pending.idToken) {
+    if (googleAdminRegisterFormError(name, organizationName, logoUrl) || !pending.idToken) {
       return;
     }
     const logo = logoUrl.trim();
@@ -61,7 +58,6 @@ export function GoogleRegisterView() {
       const session = await registerMutation.mutateAsync({
         idToken: pending.idToken,
         name: name.trim(),
-        inviteCode: inviteCode.trim(),
         organization: logo
           ? { name: organizationName.trim(), logo }
           : { name: organizationName.trim() },
@@ -120,21 +116,6 @@ export function GoogleRegisterView() {
           maxLength={NAME_MAX_LENGTH}
         />
         <AuthField
-          id="google-invite-code"
-          label="Invite code"
-          value={inviteCode}
-          onChange={(value) => {
-            touch("inviteCode");
-            setInviteCode(value);
-          }}
-          onBlur={() => touch("inviteCode")}
-          error={touched.inviteCode ? inviteCodeRuleError(inviteCode) : null}
-          placeholder="Invite code"
-          autoComplete="off"
-          maxLength={INVITE_CODE_MAX_LENGTH}
-          className="mt-5"
-        />
-        <AuthField
           id="google-organization-name"
           label="Organization Name"
           value={organizationName}
@@ -172,7 +153,7 @@ export function GoogleRegisterView() {
           type="submit"
           size="lg"
           loading={registerMutation.isPending}
-          disabled={Boolean(googleAdminRegisterFormError(name, inviteCode, organizationName, logoUrl))}
+          disabled={Boolean(googleAdminRegisterFormError(name, organizationName, logoUrl))}
           className="mt-7.5 w-full"
         >
           Continue
