@@ -1,16 +1,20 @@
 import { useCallback, useMemo, type ReactNode } from "react";
 import {
-  parsePopularTokens,
+  normalizePayConfig,
   PayWidgetsProvider,
-  type PayConfigSource,
   type ReadBalances,
 } from "@stableflow/pay-widgets/token-select";
 import useToast from "@/hooks/use-toast";
-import { intentsTokenForSelection, useIntentsTokensStore } from "@/stores/intents-tokens";
+import { usePayrollConfigQuery } from "@/hooks/use-payroll-config";
+import { intentsTokenForSelection } from "@/stores/intents-tokens";
 import { useTokenBalancesStore } from "@/stores/token-balances";
 import { useWalletStore } from "@/stores/wallet";
 import { CHAIN_KINDS, type ChainKind } from "@/wallet";
 import { useSafeMode } from "@/wallet/evm/safe";
+
+function appChainKind(kind: string): ChainKind | null {
+  return (CHAIN_KINDS as readonly string[]).includes(kind) ? kind as ChainKind : null;
+}
 
 export function PayWidgetsRoot({ children }: { children: ReactNode }) {
   const chains = useWalletStore((state) => state.chains);
@@ -18,10 +22,8 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
   const disconnect = useWalletStore((state) => state.disconnect);
   const safeApp = useSafeMode().mode === "app";
   const toast = useToast();
-  const popularTokens = useMemo(
-    () => parsePopularTokens(import.meta.env.VITE_POPULAR_TOKENS),
-    [],
-  );
+  const { data, isPending } = usePayrollConfigQuery();
+  const tokens = useMemo(() => (data ? normalizePayConfig(data) : []), [data]);
 
   const accounts = useMemo(() => {
     const next = {} as Record<ChainKind, {
@@ -43,6 +45,10 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
   }, [chains, safeApp]);
 
   const readBalances = useCallback<ReadBalances>(async (batch) => {
+    const kind = appChainKind(batch.chainKind);
+    if (!kind) {
+      return batch.tokens.map((token) => ({ assetId: token.assetId, error: "Unknown chain" }));
+    }
     const resolved = batch.tokens.map((token) => ({
       assetId: token.assetId,
       intents: intentsTokenForSelection(token),
@@ -50,7 +56,7 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
     const readable = resolved.flatMap((item) => (item.intents ? [item.intents] : []));
     if (readable.length > 0) {
       await useTokenBalancesStore.getState().fetchAll(
-        { [batch.chainKind]: batch.owner },
+        { [kind]: batch.owner },
         readable,
         { force: true },
       );
@@ -69,9 +75,15 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const onConfig = useCallback((config: PayConfigSource) => {
-    useIntentsTokensStore.getState().applyConfig(config);
-  }, []);
+  const connectKind = useCallback((kind: string) => {
+    const appKind = appChainKind(kind);
+    if (appKind) connect(appKind);
+  }, [connect]);
+
+  const disconnectKind = useCallback((kind: string) => {
+    const appKind = appChainKind(kind);
+    if (appKind) disconnect(appKind);
+  }, [disconnect]);
 
   const onCopyAddress = useCallback(async (address: string) => {
     try {
@@ -82,15 +94,12 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
     }
   }, [toast]);
 
-  const apiHost = import.meta.env.VITE_API_BASE_URL?.trim() || undefined;
-
   return (
     <PayWidgetsProvider
-      apiHost={apiHost}
-      popularTokens={popularTokens}
-      wallet={{ accounts, connect, disconnect }}
+      tokens={tokens}
+      loading={isPending}
+      wallet={{ accounts, connect: connectKind, disconnect: disconnectKind }}
       readBalances={readBalances}
-      onConfig={onConfig}
       onCopyAddress={onCopyAddress}
     >
       {children}

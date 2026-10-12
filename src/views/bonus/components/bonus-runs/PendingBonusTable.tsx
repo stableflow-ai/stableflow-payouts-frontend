@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconProcessing } from "@stableflow/pay-ui/icons/processing";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconProcessing } from "@stableflow/pay-ui/icons/outline/processing";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";

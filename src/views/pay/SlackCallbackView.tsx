@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Card } from "@stableflow/pay-ui/card";
 import {
   useSlackOAuthMutation,

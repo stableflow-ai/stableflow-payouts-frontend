@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IconQuestion } from "@stableflow/pay-ui/icons/question";
+import { IconQuestion } from "@stableflow/pay-ui/icons/outline/question";
 import { Button } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";
 import { InputNumber } from "@stableflow/pay-ui/input-number";

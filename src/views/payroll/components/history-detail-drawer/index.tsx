@@ -1,10 +1,10 @@
 import { type ReactNode } from "react";
-import { IconAlertCircle } from "@stableflow/pay-ui/icons/alert-circle";
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconExportLink, IconOutLink } from "@stableflow/pay-ui/icons/link";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconExportLink, IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconPayroll } from "@stableflow/pay-ui/icons/payroll";
-import { IconPayoutPending } from "@stableflow/pay-ui/icons/payout-status";
+import { IconPayroll } from "@stableflow/pay-ui/icons/outline/payroll";
+import { IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_SIZE, BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Drawer } from "@stableflow/pay-ui/drawer";

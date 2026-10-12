@@ -1,6 +1,6 @@
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconOutLink } from "@stableflow/pay-ui/icons/link";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { cn } from "@/lib/utils";
 
 export const PAYOUT_ROW_STATUS = {

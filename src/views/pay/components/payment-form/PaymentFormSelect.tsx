@@ -1,4 +1,4 @@
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
 import { Dropdown } from "@stableflow/pay-ui/dropdown";
 import { useOperationCatalogQuery } from "@/hooks/use-operation-api";
 import { formatAmount } from "@/utils";

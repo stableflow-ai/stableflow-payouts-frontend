@@ -1,5 +1,5 @@
-import { IconPen } from "@stableflow/pay-ui/icons/pen";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconPen } from "@stableflow/pay-ui/icons/solid/pen";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { InputNumber } from "@stableflow/pay-ui/input-number";

@@ -104,7 +104,7 @@ src/
 | Helpers for one page | `src/views/<area>/utils.ts` |
 | Shared non-business primitive | `@stableflow/pay-ui/<name>` (see doc/components/README.md) |
 | Shared business widget | `src/components/<widget-name>/` |
-| Icon | `@stableflow/pay-ui/icons/<name>` |
+| Icon | `@stableflow/pay-ui/icons/outline/<name>` or `@stableflow/pay-ui/icons/solid/<name>` |
 | Backend call | `src/api/<domain>.ts` (see [api.md](api.md)) |
 | Query / mutation hook | `src/hooks/use-<domain>-api.ts` |
 | Request / response type | `src/types/<domain>.ts` |
@@ -134,7 +134,7 @@ src/
 ```ts
 import { Button, BUTTON_SIZE, BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
-import { IconClose } from "@stableflow/pay-ui/icons/close";
+import { IconClose } from "@stableflow/pay-ui/icons/outline/close";
 import { formatAmount, formatAddress } from "@/utils";
 import { cn } from "@/lib/utils";
 ```

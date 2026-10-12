@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@stableflow/pay-ui/button";
-import { IconGoogle } from "@stableflow/pay-ui/icons/google";
+import { IconGoogle } from "@stableflow/pay-ui/icons/solid/google";
 import { useGoogleLoginMutation } from "@/hooks/use-auth-api";
 import useToast from "@/hooks/use-toast";
 import { isGoogleSignInConfigured } from "@/lib/google/config";

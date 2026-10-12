@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";

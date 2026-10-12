@@ -27,6 +27,7 @@ describe("mapPayrollConfig", () => {
       chainName: "Zcash",
       logo: "https://example.com/zec.png",
       explorer: "https://explorer.zcha.in/transactions/",
+      batchPay: false,
     });
     expect(config.tokens[0]).toEqual({
       symbol: "NEAR",
@@ -37,5 +38,13 @@ describe("mapPayrollConfig", () => {
       supportPayment: true,
       supportReceive: false,
     });
+  });
+
+  it("maps batch_pay onto batchPay", () => {
+    const config = mapPayrollConfig({
+      chains: [{ network: "eth", batch_pay: true }],
+      tokens: [],
+    });
+    expect(config.chains[0]?.batchPay).toBe(true);
   });
 });

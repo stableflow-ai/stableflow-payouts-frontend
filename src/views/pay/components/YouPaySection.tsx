@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IconLogout } from "@stableflow/pay-ui/icons/logout";
+import { IconLogout } from "@stableflow/pay-ui/icons/outline/logout";
 import { MultisigBadge } from "@/components/multisig/MultisigBadge";
 import { TokenSelectDialog } from "@stableflow/pay-widgets/token-select";
 import { formatAddress, formatAmount } from "@/utils";

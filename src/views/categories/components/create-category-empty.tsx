@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconDownload } from "@stableflow/pay-ui/icons/download";
-import { IconImportFile } from "@stableflow/pay-ui/icons/import-file";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconDownload } from "@stableflow/pay-ui/icons/outline/download";
+import { IconImportFile } from "@stableflow/pay-ui/icons/outline/import-file";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { useMediaQuery } from "@/hooks/use-media-query";

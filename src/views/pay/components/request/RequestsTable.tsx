@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { IconLink, IconOutLink } from "@stableflow/pay-ui/icons/link";
+import { IconLink, IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { Tooltip } from "@stableflow/pay-ui/tooltip";

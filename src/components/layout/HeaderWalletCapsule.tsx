@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@stableflow/pay-ui/button";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
 import { MultisigBadge } from "@/components/multisig/MultisigBadge";
 import { WalletConnectDialog } from "@/components/WalletConnect";
 import { primaryConnectedAddress, useConnectedWallets } from "@/hooks/use-wallet";

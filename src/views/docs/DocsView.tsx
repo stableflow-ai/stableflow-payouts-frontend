@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconMenu } from "@stableflow/pay-ui/icons/menu";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconMenu } from "@stableflow/pay-ui/icons/outline/menu";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_SIZE, BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Drawer } from "@stableflow/pay-ui/drawer";

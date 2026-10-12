@@ -1,5 +1,5 @@
-import { IconDownload } from "@stableflow/pay-ui/icons/download";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconDownload } from "@stableflow/pay-ui/icons/outline/download";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import type { OperationDraftRow } from "@/types/operation";

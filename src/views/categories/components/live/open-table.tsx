@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";

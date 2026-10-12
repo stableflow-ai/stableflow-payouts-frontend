@@ -1,4 +1,4 @@
-import { IconDownload } from "@stableflow/pay-ui/icons/download";
+import { IconDownload } from "@stableflow/pay-ui/icons/outline/download";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { cn } from "@/lib/utils";

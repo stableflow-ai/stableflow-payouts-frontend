@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconOutLink } from "@stableflow/pay-ui/icons/link";
-import { IconPayoutPending } from "@stableflow/pay-ui/icons/payout-status";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
+import { IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { chainDisplayName, txExplorerUrl } from "@/config/chains";

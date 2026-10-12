@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { IconExportLink } from "@stableflow/pay-ui/icons/link";
+import { IconExportLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";
