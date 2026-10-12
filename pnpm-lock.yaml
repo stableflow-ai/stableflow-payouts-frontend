@@ -7,6 +7,7 @@ settings:
 overrides:
   qr: ~0.5.5
   '@solana/web3.js': ~1.98.4
+  '@tronweb3/tronwallet-abstract-adapter': 1.3.0
 
 importers:
 
@@ -67,7 +68,7 @@ importers:
         specifier: ^3.14.10
         version: 3.14.15(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@tronweb3/tronwallet-abstract-adapter':
-        specifier: ^1.2.0
+        specifier: 1.3.0
         version: 1.3.0(bufferutil@4.1.0)(utf-8-validate@6.0.6)
       '@tronweb3/tronwallet-adapter-react-hooks':
         specifier: ^1.1.11
@@ -3173,10 +3174,6 @@ packages:
     resolution: {integrity: sha512-0vDz7eGF+CJeWQP4FLQOSXivtouTh5X3t3RYwh8tOnPegPLPnFlQ1d3uQAipTQN76N1EdgwosA0AkPrdIyOIEQ==}
     engines: {node: '>=16', pnpm: '>=7'}
 
-  '@tronweb3/tronwallet-abstract-adapter@1.2.0':
-    resolution: {integrity: sha512-Xy3ftKnxhEEWOWG6OXoN877t4oTr4W/kuQb7LWVYdn5PNeQ90LXj7eaTu9e6624iozDRuxMix5FThtqEt5F7dA==}
-    engines: {node: '>=16', pnpm: '>=7'}
-
   '@tronweb3/tronwallet-abstract-adapter@1.3.0':
     resolution: {integrity: sha512-N34McOh6N2EvobKQoLQnidxJ5+l0+6+xQgfMdBoNfbAeH1saZhEdvxnrSMyzS727uFEI+4w6KtWF9MKJZhIF4w==}
     engines: {node: '>=16', pnpm: '>=7'}
@@ -3256,7 +3253,7 @@ packages:
     resolution: {integrity: sha512-b5cuR4l9tEbqOMz8s7gr2N1I6oDb/dbhi7r+WRYeNi28DmmKfIqYPwEENjq+PLmYmX9i4mxiW27DD2lJJdqnow==}
     engines: {node: '>=16', pnpm: '>=7'}
     peerDependencies:
-      '@tronweb3/tronwallet-abstract-adapter': '*'
+      '@tronweb3/tronwallet-abstract-adapter': 1.3.0
       '@tronweb3/tronwallet-adapter-react-hooks': '*'
       react: '*'
       react-dom: '*'
@@ -12904,15 +12901,6 @@ snapshots:
     dependencies:
       eventemitter3: 4.0.7
 
-  '@tronweb3/tronwallet-abstract-adapter@1.2.0(bufferutil@4.1.0)(utf-8-validate@6.0.6)':
-    dependencies:
-      eventemitter3: 4.0.7
-      tronweb: 6.2.2(bufferutil@4.1.0)(utf-8-validate@6.0.6)
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - utf-8-validate
-
   '@tronweb3/tronwallet-abstract-adapter@1.3.0(bufferutil@4.1.0)(utf-8-validate@6.0.6)':
     dependencies:
       eventemitter3: 4.0.7
@@ -13054,7 +13042,7 @@ snapshots:
       '@ledgerhq/hw-transport': 6.27.1
       '@ledgerhq/hw-transport-webhid': 6.27.1
       '@testing-library/jest-dom': 5.17.0
-      '@tronweb3/tronwallet-abstract-adapter': 1.2.0(bufferutil@4.1.0)(utf-8-validate@6.0.6)
+      '@tronweb3/tronwallet-abstract-adapter': 1.3.0(bufferutil@4.1.0)(utf-8-validate@6.0.6)
       buffer: 6.0.3
       eventemitter3: 5.0.4
       preact: 10.23.0

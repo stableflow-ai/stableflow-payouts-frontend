@@ -30,7 +30,7 @@
     "@stableflow/pay-widgets": "0.2.0",
     "@tanstack/react-query": "^5.101.4",
     "@tanstack/react-virtual": "^3.14.10",
-    "@tronweb3/tronwallet-abstract-adapter": "^1.2.0",
+    "@tronweb3/tronwallet-abstract-adapter": "1.3.0",
     "@tronweb3/tronwallet-adapter-react-hooks": "^1.1.11",
     "@tronweb3/tronwallet-adapter-react-ui": "^1.1.5",
     "@tronweb3/tronwallet-adapters": "^1.3.2",
@@ -80,7 +80,8 @@
   "pnpm": {
     "overrides": {
       "qr": "~0.5.5",
-      "@solana/web3.js": "~1.98.4"
+      "@solana/web3.js": "~1.98.4",
+      "@tronweb3/tronwallet-abstract-adapter": "1.3.0"
     }
   }
 }
