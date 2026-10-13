@@ -141,6 +141,7 @@ export function mapPayrollRecipientRow(raw: unknown, index = 0): PayrollRecipien
     token: apiText(row.symbol),
     network: apiText(row.network),
     amount,
+    volume: apiText(row.volume) || amount,
     netPay: apiText(row.net_pay ?? row.netPay) || amount,
   };
 }
@@ -334,6 +335,10 @@ export function mapPayrollHistoryDetailRow(raw: unknown, index = 0): PayrollHist
     token: apiText(row.destination_symbol ?? row.destinationSymbol) || apiText(row.symbol),
     network: apiText(row.destination_network ?? row.destinationNetwork) || apiText(row.network),
     amount,
+    volume:
+      apiText(row.destination_volume ?? row.destinationVolume)
+      || apiText(row.volume)
+      || amount,
     netPay: apiText(row.net_pay ?? row.netPay) || amount,
     status: mapPayrollPayoutStatus(row.status),
     txHash:

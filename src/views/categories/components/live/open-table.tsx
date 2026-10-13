@@ -8,7 +8,7 @@ import { chainDisplayName } from "@/config/chains";
 import { cn } from "@/lib/utils";
 import type { OperationOpenBatch } from "@/types/operation";
 import type { Payable } from "@/types/payable";
-import { formatAmount } from "@/utils";
+import { formatAmount, formatTokenAmount } from "@/utils";
 import { DescriptionCell } from "@/views/expense/components/expense-runs/DescriptionCell";
 import { ExternalLinkConfirmDialog } from "@/views/expense/components/expense-runs/ExternalLinkConfirmDialog";
 import { PlainTextCell } from "@/views/expense/components/expense-runs/PlainTextCell";
@@ -45,7 +45,7 @@ function RowAction(props: {
 
   return (
     <Button
-      className="h-9 min-w-[113px] whitespace-nowrap rounded-[10px] px-4 text-sm"
+      className="h-9 whitespace-nowrap rounded-[10px] px-3 text-sm"
       disabled={!form}
       onClick={() => {
         if (!form) return;
@@ -124,8 +124,14 @@ function OperationBatchBlock(props: {
         <TableCell className="font-medium text-black">
           {isGroup ? "-" : payoutPreference(sole?.token ?? "", sole?.network ?? "")}
         </TableCell>
-        <TableCell className="font-medium text-black">
-          {formatAmount(batch.volume, { prefix: "", showDust: true })}
+        <TableCell className="whitespace-nowrap font-medium text-black">
+          {isGroup
+            ? formatAmount(batch.volume, { showDust: true })
+            : formatTokenAmount(
+                sole?.amount ?? "0",
+                sole?.token ?? "",
+                sole?.expense ?? sole?.amount ?? "0",
+              )}
         </TableCell>
         <TableCell className="justify-end last:pr-4">
           <RowAction
@@ -167,8 +173,8 @@ function OperationBatchBlock(props: {
               <TableCell className="font-medium text-black">
                 {payoutPreference(member.token, member.network)}
               </TableCell>
-              <TableCell className="font-medium text-black">
-                {formatAmount(member.amount, { prefix: "", showDust: true })}
+              <TableCell className="whitespace-nowrap font-medium text-black">
+                {formatTokenAmount(member.amount, member.token, member.expense || member.amount)}
               </TableCell>
               <TableCell className="last:pr-4" />
             </TableRow>

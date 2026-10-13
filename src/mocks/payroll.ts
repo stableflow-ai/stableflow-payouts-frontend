@@ -75,6 +75,7 @@ function filledNextRows(): PayrollRecipientRow[] {
       token: "USDC",
       network: "near",
       amount: NEXT_ROW_AMOUNTS[cycle],
+      volume: NEXT_ROW_AMOUNTS[cycle],
       netPay: NEXT_ROW_AMOUNTS[cycle],
     };
   });

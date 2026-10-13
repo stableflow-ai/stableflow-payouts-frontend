@@ -4,7 +4,7 @@ import { Button } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { chainDisplayName } from "@/config/chains";
-import { formatAmount } from "@/utils";
+import { formatTokenAmount } from "@/utils";
 import { PayoutRecipientCell } from "@/views/pay/components/payout-table/PayoutRecipientCell";
 import type { ExpenseOpenRow } from "@/types/expense";
 import {
@@ -35,7 +35,7 @@ function RowAction(props: {
 
   return (
     <Button
-      className="h-9 min-w-[130px] whitespace-nowrap rounded-[10px] px-4 text-sm"
+      className="h-9 whitespace-nowrap rounded-[10px] px-3 text-sm"
       disabled={!canPay}
       onClick={() => {
         if (!canPay) return;
@@ -106,7 +106,9 @@ export function RequestsTable(props: {
                   ? `${row.token} · ${chainDisplayName(row.network)}`
                   : "-"}
               </TableCell>
-              <TableCell>{formatAmount(row.amount, { prefix: "", showDust: true })}</TableCell>
+              <TableCell className="whitespace-nowrap">
+                {formatTokenAmount(row.amount, row.token, row.expense || row.amount)}
+              </TableCell>
               <TableCell className="justify-end last:pr-4">
                 <RowAction
                   action={row.action}

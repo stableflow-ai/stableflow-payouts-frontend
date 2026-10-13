@@ -49,6 +49,8 @@ formatAmount(row.amount, { prefix: "", showDust: true });   // "1,234.56"
 formatAmount(raw, { decimals: 6, maxDecimals: 6, prefix: "" });
 ```
 
+`formatTokenAmount(amount, token, volume)` renders a token quantity next to its USD volume: `200 USDC ($200)`. An empty token omits the symbol: `200 ($200)`. Both numbers use `showDust`.
+
 ## Chart — `src/utils/chart.ts`
 
 Y-axis ticks for Recharts money charts. `niceCeil(value)` rounds up to 1 / 2 / 5 / 10 times a power of ten (`0` and negatives become `1`). `chartYTicks(maxValue, divisions = 4)` returns `divisions + 1` even ticks from `0` to that ceiling.

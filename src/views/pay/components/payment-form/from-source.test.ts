@@ -26,6 +26,7 @@ const NEXT: PayrollNextRun = {
       token: "USDC",
       network: "eth",
       amount: "5000",
+      volume: "5000",
       netPay: "4800",
     },
     {
@@ -36,6 +37,7 @@ const NEXT: PayrollNextRun = {
       token: "USDT",
       network: "arb",
       amount: "4000",
+      volume: "4000",
       netPay: "4000",
     },
   ],

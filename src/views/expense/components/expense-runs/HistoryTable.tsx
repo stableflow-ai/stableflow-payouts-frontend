@@ -7,7 +7,7 @@ import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { chainDisplayName, txExplorerUrl } from "@/config/chains";
 import { useRetryPayoutItem } from "@/hooks/use-single-payout-api";
 import { cn } from "@/lib/utils";
-import { formatAmount } from "@/utils";
+import { formatTokenAmount } from "@/utils";
 import { PayoutRecipientCell } from "@/views/pay/components/payout-table/PayoutRecipientCell";
 import { PayoutRetryStatus } from "@/views/pay/components/PayoutRetryStatus";
 import {
@@ -76,14 +76,12 @@ function StatusCell(props: {
 export function HistoryTable(props: {
   rows: ExpenseHistoryRow[];
   successPath: string;
-  amountLabel?: string;
   descriptionLabel?: string;
   loading?: boolean;
 }) {
   const {
     rows,
     successPath,
-    amountLabel = "Expense",
     descriptionLabel = "Description / Receipt",
     loading = false,
   } = props;
@@ -106,14 +104,13 @@ export function HistoryTable(props: {
           <TableHead className="first:pl-4">Name</TableHead>
           <TableHead>Purpose</TableHead>
           <TableHead className="normal-case">{descriptionLabel}</TableHead>
-          <TableHead>{amountLabel}</TableHead>
           <TableHead>Address</TableHead>
           <TableHead>Payout Preference</TableHead>
           <TableHead>Amount</TableHead>
           <TableHead className="last:pr-4">Status</TableHead>
         </TableHeader>
         {loading ? (
-          <TableSkeletonRows cells={8} />
+          <TableSkeletonRows cells={7} />
         ) : (
         <TableBody className="flex flex-col gap-4">
           {rows.map((row) => (
@@ -129,14 +126,15 @@ export function HistoryTable(props: {
                   onOpenUrl={setPendingUrl}
                 />
               </TableCell>
-              <TableCell>{formatAmount(row.expense, { showDust: true })}</TableCell>
               <TableCell>
                 <PayoutRecipientCell address={row.address} />
               </TableCell>
               <TableCell>
                 {row.token} · {chainDisplayName(row.network)}
               </TableCell>
-              <TableCell>{formatAmount(row.amount, { prefix: "", showDust: true })}</TableCell>
+              <TableCell className="whitespace-nowrap">
+                {formatTokenAmount(row.amount, row.token, row.expense || row.amount)}
+              </TableCell>
               <TableCell className="last:pr-4">
                 <StatusCell
                   row={row}

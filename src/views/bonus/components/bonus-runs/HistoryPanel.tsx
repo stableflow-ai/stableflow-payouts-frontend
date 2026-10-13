@@ -40,7 +40,6 @@ export function HistoryPanel(props: {
       <HistoryTable
         rows={items}
         successPath={BONUS_HISTORY_PATH}
-        amountLabel="Bonus"
         descriptionLabel="Description"
       />
       {hasMore ? <div ref={sentinelRef} className="h-4 shrink-0" aria-hidden /> : null}

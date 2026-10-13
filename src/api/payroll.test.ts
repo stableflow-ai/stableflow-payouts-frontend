@@ -7,6 +7,7 @@ import {
   mapPayrollHistoryRun,
   mapPayrollImportResp,
   mapPayrollNextRun,
+  mapPayrollRecipientRow,
   mapPayrollRecentPayout,
   mapPayrollTotalPayoutPoint,
 } from "./payroll";
@@ -157,10 +158,22 @@ describe("mapPayrollHistoryDetailRow", () => {
       token: "USDC",
       network: "near",
       amount: "5000",
+      volume: "5000",
       netPay: "5500",
       status: "paid",
       txHash: "0xhash",
     });
+  });
+
+  it("prefers destination_volume for the USD value", () => {
+    expect(
+      mapPayrollHistoryDetailRow({
+        id: 3,
+        amount: "10",
+        volume: "8",
+        destination_volume: "9.5",
+      }).volume,
+    ).toBe("9.5");
   });
 
   it("keeps expired distinct from failed", () => {
@@ -194,6 +207,13 @@ describe("mapPayrollHistoryDetail", () => {
       executedAt: "2026-08-01",
       rows: [{ status: "failed" }, { status: "paid" }],
     });
+  });
+});
+
+describe("mapPayrollRecipientRow", () => {
+  it("maps volume and falls back to amount", () => {
+    expect(mapPayrollRecipientRow({ amount: "10", volume: "9" }).volume).toBe("9");
+    expect(mapPayrollRecipientRow({ amount: "10" }).volume).toBe("10");
   });
 });
 
@@ -236,6 +256,7 @@ describe("mapPayrollNextRun", () => {
           token: "USDC",
           network: "near",
           amount: "5000",
+          volume: "5000",
           netPay: "5000",
         },
       ],

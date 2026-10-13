@@ -56,11 +56,11 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4(bufferutil@4.1.0)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@6.0.6)
       '@stableflow/pay-ui':
-        specifier: 0.2.0
-        version: 0.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^0.2.1
+        version: 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@stableflow/pay-widgets':
-        specifier: 0.2.0
-        version: 0.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^0.2.1
+        version: 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@tanstack/react-query':
         specifier: ^5.101.4
         version: 5.104.2(react@19.3.0)
@@ -2858,14 +2858,14 @@ packages:
     resolution: {integrity: sha512-5w+NmwHOzl96nI50R/fjSD6uFydRLNUquhoEmmWbGepS4D9DnQyF2TKcUBfTyxV3sgJt00ypBt7SXB3y8WOzUQ==}
     engines: {node: '>=14'}
 
-  '@stableflow/pay-ui@0.2.0':
-    resolution: {integrity: sha512-J/wTjpnrNT7UDFXvFfTbRQkHYJWJMii+WFhSPvvSUkPojko1ZXYmh/EkHHuUDQIaLFjhPF9oHVPPBaA9nXpdqg==}
+  '@stableflow/pay-ui@0.2.1':
+    resolution: {integrity: sha512-4IMIao2p2VHRlqfrfvQdXyUljGtgjDelVTSPxak44weOGN40XBi39Ds10iyzRqUP7UF5qwdZnmjQ4/FsBIgvcg==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@stableflow/pay-widgets@0.2.0':
-    resolution: {integrity: sha512-QEtG3Y5suXZTpB/gweO56m3zchylTnF+dN50Y4vt8XQNh0vvZE1929vM08cuONQFmjKbX0w9z7Yq2YTV7k8mNA==}
+  '@stableflow/pay-widgets@0.2.1':
+    resolution: {integrity: sha512-zQcg0RPDF4SV2ZHTbhVBI2ZM6OlMTp0R0LSWVJWLo7NY8kiswmcKDgJBwu3WG4pwVxjwlLpxTQWByFVwdUfV/w==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -12397,7 +12397,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@stableflow/pay-ui@0.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@stableflow/pay-ui@0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       class-variance-authority: 0.7.1
       clsx: 2.1.1
@@ -12407,9 +12407,9 @@ snapshots:
       react-dom: 19.3.0(react@19.3.0)
       tailwind-merge: 3.7.0
 
-  '@stableflow/pay-widgets@0.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@stableflow/pay-widgets@0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@stableflow/pay-ui': 0.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@stableflow/pay-ui': 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       clsx: 2.1.1
       motion: 13.5.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
