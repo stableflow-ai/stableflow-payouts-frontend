@@ -44,7 +44,7 @@ export function HeaderWalletCapsule() {
           Connect Wallet
         </Button>
       )}
-      {dialogOpen ? <WalletConnectDialog onClose={() => setDialogOpen(false)} /> : null}
+      <WalletConnectDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
     </>
   );
 }

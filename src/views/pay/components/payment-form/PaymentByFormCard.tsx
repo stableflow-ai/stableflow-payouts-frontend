@@ -513,6 +513,8 @@ export function PaymentByFormCard(props: {
     || quoting
     || formsFetching,
   );
+  const needsConnect = formPicked && Boolean(originToken) && !connectedAddress;
+  const connectLabel = wallet.isConnecting ? "Connecting…" : "Connect wallet";
 
   function handleSend(quoteBatchId?: string) {
     if (!connectedAddress) {
@@ -661,17 +663,19 @@ export function PaymentByFormCard(props: {
           sendingQuoteBatchId={sendingQuoteBatchId}
           paidQuoteBatchIds={paidQuoteBatchIds}
           payDisabled={splitPayDisabled}
+          needsConnect={needsConnect}
+          connecting={wallet.isConnecting}
           onPay={(quoteBatchId) => handleSend(quoteBatchId)}
         />
       ) : (
         <Button
           size="xl"
           className="mt-8 w-full"
-          loading={formPicked && (formsFetching || quoting || sending || (notifyEnabled && notifyMutation.isPending))}
-          disabled={!canSendSingle}
+          loading={!needsConnect && formPicked && (formsFetching || quoting || sending || (notifyEnabled && notifyMutation.isPending))}
+          disabled={needsConnect ? wallet.isConnecting : !canSendSingle}
           onClick={() => handleSend()}
         >
-          {formPicked ? "Send Payment" : "Select Category"}
+          {!formPicked ? "Select Category" : needsConnect ? connectLabel : "Send Payment"}
         </Button>
       )}
 
