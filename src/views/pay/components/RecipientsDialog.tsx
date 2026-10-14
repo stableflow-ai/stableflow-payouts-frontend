@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { RecipientAvatar } from "@/components/recipient-avatar/RecipientAvatar";
-import { IconDelete } from "@stableflow/pay-ui/icons/delete";
-import { IconPen } from "@stableflow/pay-ui/icons/pen";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconDelete } from "@stableflow/pay-ui/icons/outline/delete";
+import { IconPen } from "@stableflow/pay-ui/icons/solid/pen";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { Button } from "@stableflow/pay-ui/button";
 import { Dialog } from "@stableflow/pay-ui/dialog";
 import type { Contact } from "@/hooks/use-contacts";
 import { formatAddress, sameAddress } from "@/utils";
 import { detectAddressChainKind } from "../utils";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
 import {
   TEAM_WALLET_TAB_LABELS,

@@ -1,6 +1,6 @@
 import type { MouseEvent } from "react";
-import { IconCloud } from "@stableflow/pay-ui/icons/cloud";
-import { IconLogout } from "@stableflow/pay-ui/icons/logout";
+import { IconCloud } from "@stableflow/pay-ui/icons/outline/cloud";
+import { IconLogout } from "@stableflow/pay-ui/icons/outline/logout";
 import { Drawer } from "@stableflow/pay-ui/drawer";
 import { DRAWER_SIDE } from "@stableflow/pay-ui/drawer";
 import { signOutGoogleDrive } from "@/lib/google/token-client";

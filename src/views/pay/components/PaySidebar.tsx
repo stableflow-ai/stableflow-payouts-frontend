@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconMore } from "@stableflow/pay-ui/icons/more";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconMore } from "@stableflow/pay-ui/icons/outline/more";
 import { BrandGlow, BrandMark } from "@/components/layout/BrandMark";
 import { HeaderAccountMenu } from "@/components/layout/HeaderAccountMenu";
 import { HEADER_ACCOUNT_MENU_VARIANT } from "@/components/layout/config";

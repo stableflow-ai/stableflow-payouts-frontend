@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { DateRangePicker } from "@stableflow/pay-ui/date-range-picker";
 import { DATE_RANGE_PRESET } from "@stableflow/pay-ui/date-range-picker";
 import { lastNDaysRange, rangeToUnixSeconds } from "@stableflow/pay-ui/date-range-picker";
-import { IconExportLink } from "@stableflow/pay-ui/icons/link";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconExportLink } from "@stableflow/pay-ui/icons/outline/link";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import {

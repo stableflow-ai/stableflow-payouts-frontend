@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { BONUS_TOTAL_PAYOUT_PERIOD } from "@/types/bonus";
 import {
   fallbackBonusImportName,
-  formatBonusTokenAmount,
   mapBonusChartSeries,
   parseBonusImportRows,
 } from "./utils";
@@ -74,16 +73,5 @@ describe("fallbackBonusImportName", () => {
     expect(fallbackBonusImportName("Andrew", "alice@example.com", "0x1234567890abcdef1234567890abcdef12345678")).toBe("Andrew");
     expect(fallbackBonusImportName("", "alice@example.com", "0x1234567890abcdef1234567890abcdef12345678")).toBe("alice");
     expect(fallbackBonusImportName("", "", "0x1234567890abcdef1234567890abcdef12345678")).toBe("0x1234...5678");
-  });
-});
-
-describe("formatBonusTokenAmount", () => {
-  it("formats amount, symbol, and USD volume", () => {
-    expect(formatBonusTokenAmount("200", "USDC", "200")).toBe("200 USDC ($200)");
-    expect(formatBonusTokenAmount("200.5", "USDC", "201.25")).toBe("200.5 USDC ($201.25)");
-  });
-
-  it("omits the symbol when it is empty", () => {
-    expect(formatBonusTokenAmount("200", "", "200")).toBe("200 ($200)");
   });
 });

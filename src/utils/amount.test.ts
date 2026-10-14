@@ -1,6 +1,6 @@
 import Big from "big.js";
 import { describe, expect, it } from "vitest";
-import { formatAmount, ROUND_DOWN, ROUND_UP } from "./amount";
+import { formatAmount, formatTokenAmount, ROUND_DOWN, ROUND_UP } from "./amount";
 
 describe("formatAmount", () => {
   it("groups thousands and prefixes $", () => {
@@ -38,5 +38,16 @@ describe("formatAmount", () => {
 
   it("places the minus sign after the prefix", () => {
     expect(formatAmount("-12.3", { padDecimals: true })).toBe("$-12.30");
+  });
+});
+
+describe("formatTokenAmount", () => {
+  it("formats amount, symbol, and USD volume", () => {
+    expect(formatTokenAmount("200", "USDC", "200")).toBe("200 USDC ($200)");
+    expect(formatTokenAmount("200.5", "USDC", "201.25")).toBe("200.5 USDC ($201.25)");
+  });
+
+  it("omits the symbol when it is empty", () => {
+    expect(formatTokenAmount("200", "", "200")).toBe("200 ($200)");
   });
 });

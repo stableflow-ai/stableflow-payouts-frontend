@@ -16,7 +16,7 @@ Read these documents before changing this repository:
 
 - **English only** in `src/` and `doc/` (code, comments, identifiers, user-facing copy).
 - **Released surface is Auth (`/login`, `/register`, `/invite/:orgId`, `/register/google`, `/invite/:orgId/google`), `/` (Overview), `/pay/*`, `/categories`, `/team`, `/history`, and `/setting` (including `/setting/slack/callback`).** `/howitworks` and `/docs` are live public pages.
-- **Icons** are imported from `@stableflow/pay-ui/icons/<name>`. Do not copy those SVGs into this repo, put UI icons in `public/`, or inline new glyphs in pages.
+- **Icons** are imported from `@stableflow/pay-ui/icons/outline/<name>` or `@stableflow/pay-ui/icons/solid/<name>`. `icons/types` stays. Do not copy those SVGs into this repo, put UI icons in `public/`, or inline new glyphs in pages.
 - **Logos** are `/logo.svg` and `/logo-white.svg`. New non-icon page art is `public/<page>/*.png`. Do not put either in `src/components/icons/`.
 - **Session** (`token` + `user`) is read and written only through `src/lib/auth-session.ts` (key `stableflow-pay.session`); `useAuthStore` mirrors it. Every other cross-page client state uses Zustand in `src/stores/` (`persist` when it must survive reload). Do not read or write `localStorage` / `sessionStorage` anywhere else. Server data stays in TanStack Query. Page-local UI uses `useState`.
 - **Figma MCP failure:** stop, ask the user to refresh the Figma MCP connection, then retry. Do not guess the design.

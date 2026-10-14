@@ -1,11 +1,11 @@
-import { IconPen } from "@stableflow/pay-ui/icons/pen";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconPen } from "@stableflow/pay-ui/icons/solid/pen";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { InputNumber } from "@stableflow/pay-ui/input-number";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { chainDisplayName } from "@/config/chains";
-import { DATE_FORMAT, formatAmount, formatDate } from "@/utils";
+import { DATE_FORMAT, formatAmount, formatDate, formatTokenAmount } from "@/utils";
 import type { PayrollNextRun } from "@/mocks/payroll";
 import { NEXT_PAYROLL_TABLE_COLUMNS } from "../../config";
 import { PayoutRecipientCell } from "@/views/pay/components/payout-table/PayoutRecipientCell";
@@ -85,7 +85,9 @@ export function NextPayrollPanel(props: {
               <TableCell>
                 {row.token} · {chainDisplayName(row.network)}
               </TableCell>
-              <TableCell>{formatAmount(row.amount, { maxDecimals: 6, prefix: "", showDust: true })}</TableCell>
+              <TableCell className="whitespace-nowrap">
+                {formatTokenAmount(row.amount, row.token, row.volume || row.amount)}
+              </TableCell>
               <TableCell className="last:pr-4">
                 <InputNumber
                   value={netPayById[row.id] ?? row.netPay}

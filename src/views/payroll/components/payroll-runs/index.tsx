@@ -1,5 +1,5 @@
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
-import { IconExportLink } from "@stableflow/pay-ui/icons/link";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
+import { IconExportLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";

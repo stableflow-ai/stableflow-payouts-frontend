@@ -48,6 +48,13 @@ export function formatAmount(
   return `${prefix}${negative ? "-" : ""}${body}`;
 }
 
+export function formatTokenAmount(amount: string, token: string, volume: string) {
+  const qty = formatAmount(amount, { prefix: "", showDust: true });
+  const usd = formatAmount(volume, { showDust: true });
+  const tokenPart = token ? `${qty} ${token}` : qty;
+  return `${tokenPart} (${usd})`;
+}
+
 function parseAmount(value: string | number | Big, decimals?: number): Big {
   try {
     let amount = value instanceof Big ? value : new Big(value);

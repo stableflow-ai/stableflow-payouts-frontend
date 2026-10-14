@@ -1,10 +1,10 @@
 import { type ReactNode } from "react";
-import { IconAlertCircle } from "@stableflow/pay-ui/icons/alert-circle";
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconExportLink, IconOutLink } from "@stableflow/pay-ui/icons/link";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconExportLink, IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconPayroll } from "@stableflow/pay-ui/icons/payroll";
-import { IconPayoutPending } from "@stableflow/pay-ui/icons/payout-status";
+import { IconPayroll } from "@stableflow/pay-ui/icons/outline/payroll";
+import { IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_SIZE, BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Drawer } from "@stableflow/pay-ui/drawer";
@@ -22,7 +22,7 @@ import type {
   PayrollHistoryDetailRow,
   PayrollHistoryRun
 } from "@/types/payroll";
-import { formatAmount } from "@/utils";
+import { formatAmount, formatTokenAmount } from "@/utils";
 import { PayoutRecipientCell } from "@/views/pay/components/payout-table/PayoutRecipientCell";
 import { PayoutRetryStatus } from "@/views/pay/components/PayoutRetryStatus";
 import {
@@ -122,9 +122,9 @@ export function PayrollHistoryDetailDrawer(props: {
           error={
             detail.isError
               ? queryErrorMessage(
-                  detail.error,
-                  "Failed to load payroll history detail"
-                )
+                detail.error,
+                "Failed to load payroll history detail"
+              )
               : null
           }
         />
@@ -145,7 +145,7 @@ function HistoryDetailBody(props: {
     run.failedCount > 0
       ? run.failedCount
       : rows.filter((row) => row.status === PAYROLL_PAYOUT_STATUS.Failed)
-          .length;
+        .length;
 
   const successPath = payrollHistoryDetailPath(run.id);
 
@@ -273,23 +273,23 @@ function HistoryDetailRow(props: {
       <p className="truncate font-montserrat text-sm font-medium text-black">
         {row.token} · {chainDisplayName(row.network)}
       </p>
-      <p className="font-montserrat text-sm font-medium text-black">
-        {formatAmount(row.amount, { prefix: "", maxDecimals: 6 })}
+      <p className="whitespace-nowrap font-montserrat text-sm font-medium text-black">
+        {formatTokenAmount(row.amount, row.token, row.volume || row.amount)}
       </p>
       <div className="min-w-0">
         <p className="font-montserrat text-sm font-medium text-black">
-          {formatAmount(row.netPay, { prefix: "", maxDecimals: 0 })}
+          {formatAmount(row.netPay, { prefix: "", maxDecimals: 2, showDust: true })}
         </p>
-        {adjustment ? (
+        {adjustment.delta ? (
           <p
             className={cn(
               "font-montserrat text-xs font-medium",
-              adjustment.startsWith("-")
+              adjustment.delta <= 0
                 ? PAYROLL_HISTORY_DETAIL_DELTA_DOWN_CLASS
                 : PAYROLL_HISTORY_DETAIL_DELTA_UP_CLASS
             )}
           >
-            {adjustment}
+            {adjustment.formatted}
           </p>
         ) : null}
       </div>
@@ -374,14 +374,18 @@ function SummaryCell(props: { label: string; value: string | ReactNode }) {
   );
 }
 
-function netPayAdjustment(amount: string, netPay: string): string | null {
+function netPayAdjustment(amount: string, netPay: string): { delta?: number; formatted?: string; } {
   const delta = Number(netPay) - Number(amount);
-  if (!Number.isFinite(delta) || delta === 0) return null;
+  if (!Number.isFinite(delta) || delta === 0) return {};
   const formatted = formatAmount(Math.abs(delta), {
     prefix: "",
-    maxDecimals: 0
+    maxDecimals: 2,
+    showDust: true,
   });
-  return delta > 0 ? `+${formatted}` : `-${formatted}`;
+  return {
+    delta,
+    formatted: delta > 0 ? `+${formatted}` : `-${formatted}`,
+  };
 }
 
 function formatExecutionDate(value: string): string {

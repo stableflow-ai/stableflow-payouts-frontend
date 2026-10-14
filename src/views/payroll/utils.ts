@@ -273,6 +273,7 @@ export function formRowsToNextRun(
       token: symbol,
       network,
       amount: row.amount.trim(),
+      volume: row.amount.trim(),
       netPay: row.amount.trim(),
       memo: row.memo.trim() || undefined,
     };
@@ -378,6 +379,7 @@ export function parsePayrollImportRows(
       token: raw.token,
       network: raw.network,
       amount,
+      volume: amount,
       netPay: amount,
       memo: raw.memo || undefined,
     });

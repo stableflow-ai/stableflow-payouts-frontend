@@ -1,4 +1,4 @@
-import { IconReceipt } from "@stableflow/pay-ui/icons/receipt";
+import { IconReceipt } from "@stableflow/pay-ui/icons/outline/receipt";
 import { splitHttpUrls } from "@/utils";
 
 export function LinkifiedText(props: {

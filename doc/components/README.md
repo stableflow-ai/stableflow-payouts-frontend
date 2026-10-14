@@ -31,9 +31,9 @@ Presentational components and shared icons come from `@stableflow/pay-ui`. The t
 
 Each package entry is its own subpath. There is no root barrel.
 
-Icons are imported per file, for example `import { IconClose } from "@stableflow/pay-ui/icons/close"`. This app has no local icon components.
+Icons are imported per file, for example `import { IconClose } from "@stableflow/pay-ui/icons/outline/close"`. Solid glyphs use `icons/solid/<name>`. This app has no local icon components.
 
-`PayWidgetsRoot` (`src/components/pay-widgets-root.tsx`) is the data boundary for the token picker: wallet, balances, popular tokens, and pay config. `useToast` stays in this app and renders `Toast` from `@stableflow/pay-ui/toast`.
+`PayWidgetsRoot` (`src/components/pay-widgets-root.tsx`) is the data boundary for the token picker: wallet, balances, and tokens from `normalizePayConfig(usePayrollConfigQuery())`. It does not fetch config. `useToast` stays in this app and renders `Toast` from `@stableflow/pay-ui/toast`.
 
 Business widgets (`WalletConnect`, `RecipientAvatar`, Pay-local components) stay next to their feature.
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { IconAlertCircle } from "@stableflow/pay-ui/icons/alert-circle";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconPayoutFailed, IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/payout-status";
+import { IconPayoutFailed, IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Card } from "@stableflow/pay-ui/card";
 import { chainDisplayName } from "@/config/chains";
 import { cn } from "@/lib/utils";

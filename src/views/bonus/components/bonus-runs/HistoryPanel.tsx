@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import type { BonusHistoryItem } from "@/types/bonus";
 import { HistoryTable } from "@/views/expense/components/expense-runs/HistoryTable";
 import { BONUS_HISTORY_PATH } from "../../config";
@@ -40,7 +40,6 @@ export function HistoryPanel(props: {
       <HistoryTable
         rows={items}
         successPath={BONUS_HISTORY_PATH}
-        amountLabel="Bonus"
         descriptionLabel="Description"
       />
       {hasMore ? <div ref={sentinelRef} className="h-4 shrink-0" aria-hidden /> : null}

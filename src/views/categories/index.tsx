@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IconBack } from "@stableflow/pay-ui/icons/back";
+import { IconBack } from "@stableflow/pay-ui/icons/outline/back";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
 import { Button } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";

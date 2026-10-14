@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IconEmail } from "@stableflow/pay-ui/icons/email";
+import { IconEmail } from "@stableflow/pay-ui/icons/outline/email";
 import { Card } from "@stableflow/pay-ui/card";
 import {
   integrationSettingsFromOrganization,

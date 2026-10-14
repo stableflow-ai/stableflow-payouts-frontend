@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IconEmail } from "@stableflow/pay-ui/icons/email";
-import { IconLock } from "@stableflow/pay-ui/icons/lock";
+import { IconEmail } from "@stableflow/pay-ui/icons/outline/email";
+import { IconLock } from "@stableflow/pay-ui/icons/solid/lock";
 import { Button } from "@stableflow/pay-ui/button";
 import { getBatchBlockchains } from "@/config/chains";
 import { batchSubmit } from "@/api/payout";
@@ -513,6 +513,8 @@ export function PaymentByFormCard(props: {
     || quoting
     || formsFetching,
   );
+  const needsConnect = formPicked && Boolean(originToken) && !connectedAddress;
+  const connectLabel = wallet.isConnecting ? "Connecting…" : "Connect wallet";
 
   function handleSend(quoteBatchId?: string) {
     if (!connectedAddress) {
@@ -661,17 +663,19 @@ export function PaymentByFormCard(props: {
           sendingQuoteBatchId={sendingQuoteBatchId}
           paidQuoteBatchIds={paidQuoteBatchIds}
           payDisabled={splitPayDisabled}
+          needsConnect={needsConnect}
+          connecting={wallet.isConnecting}
           onPay={(quoteBatchId) => handleSend(quoteBatchId)}
         />
       ) : (
         <Button
           size="xl"
           className="mt-8 w-full"
-          loading={formPicked && (formsFetching || quoting || sending || (notifyEnabled && notifyMutation.isPending))}
-          disabled={!canSendSingle}
+          loading={!needsConnect && formPicked && (formsFetching || quoting || sending || (notifyEnabled && notifyMutation.isPending))}
+          disabled={needsConnect ? wallet.isConnecting : !canSendSingle}
           onClick={() => handleSend()}
         >
-          {formPicked ? "Send Payment" : "Select Category"}
+          {!formPicked ? "Select Category" : needsConnect ? connectLabel : "Send Payment"}
         </Button>
       )}
 

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Icon2Right } from "@stableflow/pay-ui/icons/to-right";
+import { Icon2Right } from "@stableflow/pay-ui/icons/outline/to-right";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { txExplorerUrl } from "@/config/chains";

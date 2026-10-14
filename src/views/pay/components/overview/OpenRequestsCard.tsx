@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Icon2Right } from "@stableflow/pay-ui/icons/to-right";
+import { Icon2Right } from "@stableflow/pay-ui/icons/outline/to-right";
 import { Card } from "@stableflow/pay-ui/card";
 import { formatDate } from "@/utils";
 import type { MemberOpenRequest } from "@/types/overview";

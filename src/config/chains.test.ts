@@ -2,13 +2,14 @@ import { describe, expect, it } from "vitest";
 import { mergeApiChain, mergeApiChains } from "./chains";
 
 describe("mergeApiChain", () => {
-  it("merges CHAIN_META batchEnabled", () => {
+  it("reads batchPay from the config row", () => {
     expect(mergeApiChain({
       network: "zec",
       chainId: "",
       chainName: "Zcash",
       logo: "https://example.com/zec.png",
       explorer: "https://explorer.zcha.in/transactions/",
+      batchPay: false,
     })).toMatchObject({
       blockchain: "zec",
       chainKind: "zec",
@@ -24,6 +25,7 @@ describe("mergeApiChain", () => {
       chainName: "New Chain",
       logo: "",
       explorer: "https://scan.example/tx/",
+      batchPay: true,
     })).toMatchObject({
       blockchain: "newchain",
       chainKind: "evm",
@@ -39,6 +41,7 @@ describe("mergeApiChain", () => {
       chainName: "Unknown",
       logo: "",
       explorer: "",
+      batchPay: false,
     })).toBeNull();
   });
 });
@@ -52,6 +55,7 @@ describe("mergeApiChains", () => {
         chainName: "Ethereum",
         logo: "",
         explorer: "https://etherscan.io/tx/",
+        batchPay: true,
       },
       {
         network: "unknown",
@@ -59,6 +63,7 @@ describe("mergeApiChains", () => {
         chainName: "Unknown",
         logo: "",
         explorer: "",
+        batchPay: false,
       },
     ]);
     expect(chains.map((chain) => chain.blockchain)).toEqual(["eth"]);

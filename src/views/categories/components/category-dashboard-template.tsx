@@ -8,8 +8,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconCopy } from "@stableflow/pay-ui/icons/copy";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconCopy } from "@stableflow/pay-ui/icons/outline/copy";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";

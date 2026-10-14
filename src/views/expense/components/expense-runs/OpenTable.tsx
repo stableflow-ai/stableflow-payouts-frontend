@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
 import { TableSkeletonRows } from "@stableflow/pay-ui/table";
@@ -8,7 +8,7 @@ import { chainDisplayName } from "@/config/chains";
 import { cn } from "@/lib/utils";
 import type { ExpenseOpenBatch } from "@/types/expense";
 import type { Payable } from "@/types/payable";
-import { formatAmount } from "@/utils";
+import { formatAmount, formatTokenAmount } from "@/utils";
 import { PayoutRecipientCell } from "@/views/pay/components/payout-table/PayoutRecipientCell";
 import { expenseBatchToPayable } from "@/views/pay/components/payment-form/from-source";
 import {
@@ -47,7 +47,7 @@ function RowAction(props: {
 
   return (
     <Button
-      className="h-9 min-w-[113px] whitespace-nowrap rounded-[10px] px-4 text-sm"
+        className="h-9 whitespace-nowrap rounded-[10px] px-3 text-sm"
       disabled={!form}
       onClick={() => {
         if (!form) return;
@@ -125,8 +125,14 @@ function ExpenseBatchBlock(props: {
         <TableCell className="font-medium text-black">
           {isGroup ? "-" : payoutPreference(sole?.token ?? "", sole?.network ?? "")}
         </TableCell>
-        <TableCell className="font-medium text-black">
-          {formatAmount(batch.volume, { prefix: "", showDust: true })}
+        <TableCell className="whitespace-nowrap font-medium text-black">
+          {isGroup
+            ? formatAmount(batch.volume, { showDust: true })
+            : formatTokenAmount(
+                sole?.amount ?? "0",
+                sole?.token ?? "",
+                sole?.expense ?? sole?.amount ?? "0",
+              )}
         </TableCell>
         <TableCell className="justify-end last:pr-4">
           <RowAction
@@ -167,8 +173,8 @@ function ExpenseBatchBlock(props: {
               <TableCell className="font-medium text-black">
                 {payoutPreference(member.token, member.network)}
               </TableCell>
-              <TableCell className="font-medium text-black">
-                {formatAmount(member.amount, { prefix: "", showDust: true })}
+              <TableCell className="whitespace-nowrap font-medium text-black">
+                {formatTokenAmount(member.amount, member.token, member.expense || member.amount)}
               </TableCell>
               <TableCell className="last:pr-4" />
             </TableRow>

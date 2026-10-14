@@ -1,4 +1,4 @@
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
 import { Drawer } from "@stableflow/pay-ui/drawer";
 import { DRAWER_SIDE } from "@stableflow/pay-ui/drawer";
 import { Switch } from "@stableflow/pay-ui/switch";

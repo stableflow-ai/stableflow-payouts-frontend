@@ -126,7 +126,7 @@ export const PAYROLL_STATUS_FAILED_CLASS = "text-[#E43222]";
 export const PAYROLL_STATUS_PAID_CLASS = "text-[#84A20F]";
 
 export const NEXT_PAYROLL_TABLE_COLUMNS =
-  "minmax(110px,1fr) minmax(130px,1.1fr) minmax(140px,1.1fr) minmax(130px,1fr) minmax(80px,0.6fr) minmax(110px,0.7fr)";
+  "minmax(110px,1fr) minmax(130px,1.1fr) minmax(140px,1.1fr) minmax(130px,1fr) minmax(220px,1.4fr) minmax(110px,0.7fr)";
 
 export const PAYROLL_HISTORY_DETAIL_DESKTOP_QUERY = "(min-width: 768px)";
 
@@ -140,7 +140,7 @@ export const PAYROLL_HISTORY_DETAIL_COLUMNS = [
 ] as const;
 
 export const PAYROLL_HISTORY_DETAIL_GRID =
-  "grid min-w-[760px] grid-cols-[1.3fr_1.2fr_1.1fr_0.7fr_0.7fr_0.9fr] items-center gap-x-3";
+  "grid min-w-[960px] grid-cols-[1.3fr_1.2fr_1.1fr_1.6fr_0.7fr_0.9fr] items-center gap-x-3";
 
 export const PAYROLL_HISTORY_DETAIL_PAID_CLASS = "text-[#769400]";
 export const PAYROLL_HISTORY_DETAIL_DELTA_UP_CLASS = "text-[#94ba00]";

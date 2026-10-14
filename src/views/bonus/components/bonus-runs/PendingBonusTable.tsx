@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconProcessing } from "@stableflow/pay-ui/icons/processing";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconProcessing } from "@stableflow/pay-ui/icons/outline/processing";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@stableflow/pay-ui/table";
@@ -9,7 +9,7 @@ import { TableSkeletonRows } from "@stableflow/pay-ui/table";
 import { cn } from "@/lib/utils";
 import type { BonusPendingItem } from "@/types/bonus";
 import type { Payable } from "@/types/payable";
-import { formatAmount } from "@/utils";
+import { formatAmount, formatTokenAmount } from "@/utils";
 import { DescriptionCell } from "@/views/expense/components/expense-runs/DescriptionCell";
 import { ExternalLinkConfirmDialog } from "@/views/expense/components/expense-runs/ExternalLinkConfirmDialog";
 import { PlainTextCell } from "@/views/expense/components/expense-runs/PlainTextCell";
@@ -19,8 +19,6 @@ import {
   BONUS_ROW_ACTION,
   PENDING_BONUS_TABLE_COLUMNS,
 } from "../../config";
-import { formatBonusTokenAmount } from "../../utils";
-
 function ActionCell(props: {
   item: BonusPendingItem;
   onPayNow: (form: Payable) => void;
@@ -44,7 +42,7 @@ function ActionCell(props: {
 
   return (
     <Button
-      className="h-9 min-w-[113px] rounded-[10px] px-3 text-sm whitespace-nowrap"
+      className="h-9 rounded-[10px] px-3 text-sm whitespace-nowrap"
       disabled={!form}
       onClick={() => {
         if (!form) return;
@@ -108,7 +106,7 @@ function BonusItemBlock(props: {
         <TableCell className="font-medium text-black">
           {isGroup
             ? formatAmount(item.amount, { showDust: true })
-            : formatBonusTokenAmount(
+            : formatTokenAmount(
                 sole?.amount ?? "0",
                 sole?.token ?? "",
                 sole?.volume ?? sole?.amount ?? "0",
@@ -147,7 +145,7 @@ function BonusItemBlock(props: {
                 <DescriptionCell value={member.description} onOpenUrl={onOpenUrl} />
               </TableCell>
               <TableCell className="font-medium text-black">
-                {formatBonusTokenAmount(member.amount, member.token, member.volume)}
+                {formatTokenAmount(member.amount, member.token, member.volume)}
               </TableCell>
               <TableCell>
                 <PayoutRecipientCell address={member.address} prefix={5} suffix={5} />

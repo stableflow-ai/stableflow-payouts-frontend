@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { IconAlertCircle } from "@stableflow/pay-ui/icons/alert-circle";
-import { IconExportLink } from "@stableflow/pay-ui/icons/link";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
-import { IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/payout-status";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
+import { IconExportLink } from "@stableflow/pay-ui/icons/outline/link";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
+import { IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
 import { usePayrollHistoryDetailExportMutation } from "@/hooks/use-payroll-api";

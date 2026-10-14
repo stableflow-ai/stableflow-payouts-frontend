@@ -73,7 +73,7 @@ export const BONUS_STATUS_FAILED_CLASS = "text-[#E43222]";
 export const BONUS_STATUS_PAID_CLASS = "text-[#84A20F]";
 
 export const PENDING_BONUS_TABLE_COLUMNS =
-  "minmax(140px,1.2fr) minmax(88px,0.7fr) minmax(120px,1fr) minmax(160px,1.4fr) minmax(160px,1.3fr) minmax(140px,1.1fr) minmax(140px,1fr) minmax(120px,0.9fr)";
+  "minmax(140px,1.2fr) minmax(88px,0.7fr) minmax(120px,1fr) minmax(160px,1.4fr) minmax(220px,1.4fr) minmax(140px,1.1fr) minmax(140px,1fr) minmax(152px,0.9fr)";
 
 export { IMPORT_CSV_ACCEPT } from "@/lib/import/config";
 export const IMPORT_CSV_TEMPLATE_FILENAME = "bonus-import-template.xlsx";

@@ -1,6 +1,6 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Icon2Right } from "@stableflow/pay-ui/icons/to-right";
+import { Icon2Right } from "@stableflow/pay-ui/icons/outline/to-right";
 import { Button } from "@stableflow/pay-ui/button";
 import { integrationSettingsFromOrganization } from "@/api/organization";
 import { useGoogleInviteRegisterMutation, useInvitePreviewQuery } from "@/hooks/use-invite-api";

@@ -76,6 +76,7 @@ export interface PayrollRecipientRow {
   token: string;
   network: string;
   amount: string;
+  volume: string;
   netPay: string;
   memo?: string;
 }
@@ -136,6 +137,7 @@ export interface PayrollHistoryDetailRow {
   token: string;
   network: string;
   amount: string;
+  volume: string;
   netPay: string;
   status: PayrollRecentPayoutStatus;
   txHash: string;

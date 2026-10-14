@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { IconAlertCircle } from "@stableflow/pay-ui/icons/alert-circle";
-import { IconArrowDown } from "@stableflow/pay-ui/icons/arrow-down";
-import { IconCalendar } from "@stableflow/pay-ui/icons/calendar";
-import { IconMember } from "@stableflow/pay-ui/icons/member";
-import { IconRequest } from "@stableflow/pay-ui/icons/request";
-import { Icon2Right } from "@stableflow/pay-ui/icons/to-right";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
+import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
+import { IconCalendar } from "@stableflow/pay-ui/icons/outline/calendar";
+import { IconMember } from "@stableflow/pay-ui/icons/outline/member";
+import { IconRequest } from "@stableflow/pay-ui/icons/outline/request";
+import { Icon2Right } from "@stableflow/pay-ui/icons/outline/to-right";
 import { Card } from "@stableflow/pay-ui/card";
 import { useClickOrganizationHighPriorityMutation } from "@/hooks/use-admin-overview-api";
 import { organizationId } from "@/lib/auth-role";

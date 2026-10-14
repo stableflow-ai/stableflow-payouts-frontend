@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { IconDelete } from "@stableflow/pay-ui/icons/delete";
-import { IconPlus } from "@stableflow/pay-ui/icons/plus";
+import { IconDelete } from "@stableflow/pay-ui/icons/outline/delete";
+import { IconPlus } from "@stableflow/pay-ui/icons/outline/plus";
 import { TokenSelectDialog } from "@stableflow/pay-widgets/token-select";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";

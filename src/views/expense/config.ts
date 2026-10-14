@@ -59,13 +59,13 @@ export const EXPENSE_STATUS_PAID_CLASS = "text-[#84A20F]";
 export const EXPENSE_HISTORY_PAID_CLASS = "text-[#769400]";
 
 export const OPEN_EXPENSE_TABLE_COLUMNS =
-  "minmax(140px,1.2fr) minmax(88px,0.8fr) minmax(120px,1fr) minmax(160px,1.4fr) minmax(140px,1.1fr) minmax(140px,1fr) minmax(140px,1.2fr) minmax(80px,0.7fr) minmax(120px,0.9fr)";
+  "minmax(140px,1.2fr) minmax(88px,0.8fr) minmax(120px,1fr) minmax(160px,1.4fr) minmax(140px,1.1fr) minmax(140px,1fr) minmax(140px,1.2fr) minmax(220px,1.4fr) minmax(152px,0.9fr)";
 
 export const REQUEST_PAYMENTS_TABLE_COLUMNS =
-  "minmax(88px,0.7fr) minmax(128px,1fr) minmax(180px,1.6fr) minmax(120px,1fr) minmax(128px,1.1fr) minmax(72px,0.6fr) minmax(120px,0.9fr)";
+  "minmax(88px,0.7fr) minmax(128px,1fr) minmax(180px,1.6fr) minmax(120px,1fr) minmax(128px,1.1fr) minmax(220px,1.4fr) minmax(152px,0.9fr)";
 
 export const HISTORY_EXPENSE_TABLE_COLUMNS =
-  "minmax(88px,0.7fr) minmax(128px,1fr) minmax(180px,1.6fr) minmax(100px,0.8fr) minmax(120px,1fr) minmax(128px,1.1fr) minmax(72px,0.6fr) minmax(100px,0.85fr)";
+  "minmax(88px,0.7fr) minmax(128px,1fr) minmax(180px,1.6fr) minmax(120px,1fr) minmax(128px,1.1fr) minmax(220px,1.4fr) minmax(100px,0.85fr)";
 
 export const EXPENSE_DRAWER_TITLE = "Add Expense";
 export const EXPENSE_FORM_DESKTOP_QUERY = "(min-width: 768px)";

@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { IconFieldError } from "@stableflow/pay-ui/icons/field-error";
+import { IconFieldError } from "@stableflow/pay-ui/icons/solid/field-error";
 import { Button } from "@stableflow/pay-ui/button";
 import { Dialog } from "@stableflow/pay-ui/dialog";
 import { cn } from "@/lib/utils";

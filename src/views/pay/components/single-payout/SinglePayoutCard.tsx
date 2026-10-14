@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { IconQuestion } from "@stableflow/pay-ui/icons/question";
+import { IconQuestion } from "@stableflow/pay-ui/icons/outline/question";
 import { Button } from "@stableflow/pay-ui/button";
 import { InputNumber } from "@stableflow/pay-ui/input-number";
 import { Tooltip } from "@stableflow/pay-ui/tooltip";

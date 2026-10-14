@@ -4,6 +4,11 @@ Newest first. Add an entry when this app's usage of `@stableflow/pay-ui`, `@stab
 
 Format: one `## YYYY-MM-DD` heading per day, one `- **ComponentName:** what changed` bullet per component.
 
+## 2026-10-12
+
+- **TokenSelectDialog:** `PayWidgetsRoot` passes tokens from `normalizePayConfig(usePayrollConfigQuery())` and `loading` from `isPending`. The widget no longer fetches payroll config. `popularTokens` is removed. The picker is a chain selector: Recently Used cards, Your Tokens, Recent Searches, and Trends Token.
+- **Icons:** Imports use `@stableflow/pay-ui/icons/outline/<name>` or `@stableflow/pay-ui/icons/solid/<name>`. `icons/types` is unchanged.
+
 ## 2026-09-23
 
 - **pay-ui:** Shared components, overlay helpers, and package icons now import from `@stableflow/pay-ui` subpaths. Token select imports `@stableflow/pay-widgets/token-select` through `PayWidgetsRoot`. Local copies of those components, icons, and `token-select-prefs` are removed.

@@ -5,9 +5,9 @@
  */
 import type { ReactNode } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { IconCheck } from "@stableflow/pay-ui/icons/check";
-import { IconLoading } from "@stableflow/pay-ui/icons/loading";
-import { IconOutLink } from "@stableflow/pay-ui/icons/link";
+import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
+import { IconOutLink } from "@stableflow/pay-ui/icons/outline/link";
 import { Button } from "@stableflow/pay-ui/button";
 import { Card } from "@stableflow/pay-ui/card";
 import { chainDisplayName, txExplorerUrl } from "@/config/chains";

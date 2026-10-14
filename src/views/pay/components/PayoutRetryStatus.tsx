@@ -1,5 +1,5 @@
-import { IconAlert } from "@stableflow/pay-ui/icons/alert";
-import { IconUp } from "@stableflow/pay-ui/icons/up";
+import { IconAlert } from "@stableflow/pay-ui/icons/outline/alert";
+import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { Tooltip } from "@stableflow/pay-ui/tooltip";
 import { cn } from "@/lib/utils";

@@ -1,5 +1,6 @@
 import { Button } from "@stableflow/pay-ui/button";
 import { formatAmount } from "@/utils";
+import { cn } from "@/lib/utils";
 import type { PayablePayQuoteBatch } from "@/types/payout";
 import { AMOUNT_MAX_DECIMALS } from "../../config";
 import { batchPaymentRowLabel, batchSplitBannerText } from "./config";
@@ -10,9 +11,19 @@ export function PaymentFormBatchRows(props: {
   sendingQuoteBatchId: string | null;
   paidQuoteBatchIds: ReadonlySet<string>;
   payDisabled: boolean;
+  needsConnect?: boolean;
+  connecting?: boolean;
   onPay: (quoteBatchId: string) => void;
 }) {
-  const { batches, sendingQuoteBatchId, paidQuoteBatchIds, payDisabled, onPay } = props;
+  const {
+    batches,
+    sendingQuoteBatchId,
+    paidQuoteBatchIds,
+    payDisabled,
+    needsConnect = false,
+    connecting = false,
+    onPay,
+  } = props;
   const nextQuoteBatchId = nextUnpaidQuoteBatchId(batches, paidQuoteBatchIds);
 
   return (
@@ -32,7 +43,14 @@ export function PaymentFormBatchRows(props: {
             maxDecimals: AMOUNT_MAX_DECIMALS,
           });
           const symbol = row.batch.sourceSymbol.trim();
-          const label = paid ? "Processing..." : paying ? "Paying..." : "Pay Now";
+          const showConnect = needsConnect && next && !paid && !paying;
+          const label = paid
+            ? "Processing..."
+            : paying
+              ? "Paying..."
+              : showConnect
+                ? (connecting ? "Connecting…" : "Connect wallet")
+                : "Pay Now";
           return (
             <div key={row.quoteBatchId} className="flex items-center gap-3 border-b border-[#e5e5e5] last:border-b-0 pb-2 last:pb-0">
               <p className="font-montserrat text-sm font-medium text-[#606060]">
@@ -43,8 +61,11 @@ export function PaymentFormBatchRows(props: {
               </p>
               <Button
                 size="md"
-                className="w-[120px] whitespace-nowrap h-[50px] px-3 shrink-0 !text-sm"
-                disabled={payDisabled || paid || paying || !next}
+                className={cn(
+                  "h-[50px] shrink-0 whitespace-nowrap px-3 !text-sm",
+                  showConnect ? "w-[148px]" : "w-[120px]",
+                )}
+                disabled={showConnect ? connecting : payDisabled || paid || paying || !next}
                 onClick={() => onPay(row.quoteBatchId)}
               >
                 {label}

@@ -1,4 +1,4 @@
-import { IconCopy } from "@stableflow/pay-ui/icons/copy";
+import { IconCopy } from "@stableflow/pay-ui/icons/outline/copy";
 import { Tooltip } from "@stableflow/pay-ui/tooltip";
 import useToast from "@/hooks/use-toast";
 import { formatAddress } from "@/utils";

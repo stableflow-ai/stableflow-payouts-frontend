@@ -20,6 +20,7 @@ function mapConfigChain(raw: unknown): PayrollConfigChain {
     chainName: apiText(row.chain_name ?? row.chainName),
     logo: apiText(row.logo),
     explorer: apiText(row.explorer),
+    batchPay: asBoolean(row.batch_pay ?? row.batchPay, false),
   };
 }
 
@@ -44,5 +45,5 @@ export function mapPayrollConfig(raw: unknown): PayrollConfig {
 }
 
 export async function getPayrollConfig(): Promise<PayrollConfig> {
-  return mapPayrollConfig(await http<unknown>("/v1/pay/config", { auth: false }));
+  return mapPayrollConfig(await http<unknown>("/v1/payroll/config", { auth: false }));
 }
