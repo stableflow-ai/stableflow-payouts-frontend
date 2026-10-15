@@ -1,9 +1,11 @@
 import { Button } from "@stableflow/pay-ui/button";
 import { Dialog } from "@stableflow/pay-ui/dialog";
+import { IconCopy } from "@stableflow/pay-ui/icons/outline/copy";
 import { HEADER_CHAIN_LOGO } from "@/components/layout/config";
 import { MultisigBadge } from "@/components/multisig/MultisigBadge";
 import { PayFromSquadSection } from "@/components/multisig/PayFromSquadSection";
 import { chainLabel, FIXED_CHAIN_KINDS } from "@/config/chains";
+import useToast from "@/hooks/use-toast";
 import { useWallet } from "@/hooks/use-wallet";
 import { chainLogoUrl } from "@/lib/logo";
 import { formatAddress } from "@/utils";
@@ -30,6 +32,7 @@ function ChainRow(props: {
   onConnect: () => void;
 }) {
   const { kind, onConnect } = props;
+  const toast = useToast();
   const wallet = useWallet(kind);
   const address = wallet.account?.address || null;
   const safeApp = useSafeMode().mode === "app";
@@ -53,8 +56,23 @@ function ChainRow(props: {
               {showMultisig ? <MultisigBadge chainKind={kind} /> : null}
             </div>
             {address ? (
-              <p className="truncate font-montserrat text-[12px] text-[#606060]">
-                {formatAddress(address)}
+              <p className="flex min-w-0 items-center gap-1 font-montserrat text-[12px] text-[#606060]">
+                <span className="truncate">{formatAddress(address)}</span>
+                <button
+                  type="button"
+                  className="shrink-0 cursor-pointer text-[#909090] hover:text-black"
+                  aria-label="Copy address"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(address);
+                      toast.success({ title: "Copied" });
+                    } catch {
+                      toast.fail({ title: "Could not copy" });
+                    }
+                  }}
+                >
+                  <IconCopy className="size-3" />
+                </button>
               </p>
             ) : (
               <p className="font-montserrat text-[12px] text-[#606060]">{kindHint(kind)}</p>
