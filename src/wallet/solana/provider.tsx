@@ -1,6 +1,4 @@
 import { ConnectionContext, WalletProvider } from "@solana/wallet-adapter-react";
-import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import "@solana/wallet-adapter-react-ui/styles.css";
 import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
@@ -11,6 +9,7 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import useToast from "@/hooks/use-toast";
 import { metadata } from "../metadata";
 import { LedgerConnectDialog } from "./LedgerConnectDialog";
+import { SolanaWalletModalProvider } from "./select-modal";
 import { SolanaLedgerWalletAdapter } from "./ledger-adapter";
 import { reportSolanaWalletError } from "./utils";
 import {
@@ -53,10 +52,10 @@ export function SolanaWalletProvider({ children }: { children: ReactNode }) {
       <WalletProvider wallets={wallets} autoConnect onError={(error) => {
         reportSolanaWalletError(toast, error);
       }}>
-        <WalletModalProvider>
+        <SolanaWalletModalProvider>
           {children}
           <LedgerConnectDialog />
-        </WalletModalProvider>
+        </SolanaWalletModalProvider>
       </WalletProvider>
     </ConnectionContext.Provider>
   );
