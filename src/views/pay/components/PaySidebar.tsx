@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
-import { IconMore } from "@stableflow/pay-ui/icons/outline/more";
+import { IconMenu } from "@stableflow/pay-ui/icons/outline/menu";
 import { BrandGlow, BrandMark } from "@/components/layout/BrandMark";
 import { HeaderAccountMenu } from "@/components/layout/HeaderAccountMenu";
 import { HEADER_ACCOUNT_MENU_VARIANT } from "@/components/layout/config";
@@ -59,7 +59,7 @@ function MoreCategoriesControl(props: { onClick: () => void }) {
         onClick={props.onClick}
         className="inline-flex size-[26px] shrink-0 items-center justify-center rounded-[8px] text-[#AAA] hover:bg-[#F6F6F6]"
       >
-        <IconMore className="h-[10px] w-[2.5px]" />
+        <IconMenu className="h-[10px] w-[2.5px]" />
       </button>
     </Tooltip>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { IconMore } from "@stableflow/pay-ui/icons/outline/more";
+import { IconMenu } from "@stableflow/pay-ui/icons/outline/menu";
 import { IconPay } from "@stableflow/pay-ui/icons/outline/pay";
 import { IconPen } from "@stableflow/pay-ui/icons/solid/pen";
 import { IconRemove } from "@stableflow/pay-ui/icons/outline/remove";
@@ -68,7 +68,7 @@ export function TeamMemberMenu(props: {
         }}
         className="inline-flex size-8 items-center justify-center rounded-full text-[#aaa] hover:bg-black/5 hover:text-black"
       >
-        <IconMore className="h-3.5 w-[3px]" />
+        <IconMenu className="h-3.5 w-[3px]" />
       </button>
       {open && typeof document !== "undefined"
         ? createPortal(

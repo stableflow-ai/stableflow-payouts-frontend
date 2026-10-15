@@ -4,7 +4,6 @@ import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
 import { IconCheck } from "@stableflow/pay-ui/icons/outline/check";
 import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconProcessing } from "@stableflow/pay-ui/icons/outline/processing";
 import { Card } from "@stableflow/pay-ui/card";
 import { chainDisplayName } from "@/config/chains";
 import { cn } from "@/lib/utils";
@@ -50,7 +49,7 @@ function StatusMark({ status }: { status: ExpensePayoutStatus }) {
   }
   return (
     <span className="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-[#3F8AFB]/20">
-      <IconProcessing className="size-2.5 animate-spin text-[#6284F5]" />
+      <IconLoading className="size-2.5 animate-spin text-[#6284F5]" />
     </span>
   );
 }

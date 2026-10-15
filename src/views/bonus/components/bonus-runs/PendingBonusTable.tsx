@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
-import { IconProcessing } from "@stableflow/pay-ui/icons/outline/processing";
+import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { IconUp } from "@stableflow/pay-ui/icons/outline/up";
 import { Button } from "@stableflow/pay-ui/button";
 import { BUTTON_VARIANT } from "@stableflow/pay-ui/button";
@@ -32,7 +32,7 @@ function ActionCell(props: {
         disabled
         className="h-9 min-w-[97px] rounded-[10px] border-black/10 px-3 text-sm text-[#606060]"
       >
-        <IconProcessing className="size-2.5 shrink-0 animate-spin text-[#909090]" />
+        <IconLoading className="size-2.5 shrink-0 animate-spin text-[#909090]" />
         Paying
       </Button>
     );
