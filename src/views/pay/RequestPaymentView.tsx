@@ -9,6 +9,7 @@ import {
   useCreatePayRequestMutation,
   usePaymentRequestDefaultAddressesQuery,
 } from "@/hooks/use-request-payment";
+import { useWalletDrawerTarget } from "@/hooks/use-wallet-drawer-target";
 import { useConnectedWallets } from "@/hooks/use-wallet";
 import useToast from "@/hooks/use-toast";
 import { organizationId } from "@/lib/auth-role";
@@ -30,6 +31,7 @@ import {
   tokenChainKind,
 } from "./request-utils";
 import { detectAddressChainKind, formatQuoteErrorMessage, parsePositiveDecimal } from "./utils";
+import { receiverTokenDisabledReason } from "./wallet-drawer-target";
 
 const FIELD_CLASS =
   "mt-2 h-9 w-full rounded-[6px] border border-[#e3e3e3] bg-[#f6f6f6] px-3 font-montserrat text-sm font-medium text-black outline-none placeholder:text-black/30";
@@ -58,6 +60,13 @@ export function RequestPaymentView() {
 
   const destKind = tokenChainKind(destToken);
   const destLockChainKind = detectAddressChainKind(addressInput);
+  useWalletDrawerTarget({
+    onSelect: (token) => {
+      const next = intentsTokenForSelection(token);
+      if (next) setDestToken(next);
+    },
+    disabledReason: (token) => receiverTokenDisabledReason(token, destLockChainKind),
+  });
   const defaultAddresses = defaultsQuery.data ?? [];
 
   useEffect(() => {

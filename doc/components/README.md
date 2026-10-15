@@ -29,13 +29,15 @@ Presentational components and shared icons come from `@stableflow/pay-ui`. The t
 | Overlay helpers | `@stableflow/pay-ui/overlay` |
 | TokenSelectDialog | `@stableflow/pay-widgets/token-select` |
 | WalletSelectDialog | `@stableflow/pay-widgets/wallet-select` |
+| WalletChainsButton | `@stableflow/pay-widgets/wallet-chains-button` |
+| MyWalletsDrawer | `@stableflow/pay-widgets/my-wallets` |
 
 Each package entry is its own subpath. There is no root barrel.
 
 Icons are imported per file, for example `import { IconClose } from "@stableflow/pay-ui/icons/outline/close"`. Solid glyphs use `icons/solid/<name>`. This app has no local icon components.
 
-`PayWidgetsRoot` (`src/components/pay-widgets-root.tsx`) is the data boundary for the token picker: wallet, balances, and tokens from `normalizePayConfig(usePayrollConfigQuery())`. It does not fetch config. `WalletSelectDialog` is presentational and is imported directly from `src/wallet/*`. It does not use `PayWidgetsRoot`. `useToast` stays in this app and renders `Toast` from `@stableflow/pay-ui/toast`.
+`PayWidgetsRoot` (`src/components/pay-widgets-root.tsx`) is the data boundary for the token picker and My Wallets: wallet, balances, `walletKinds` from `FIXED_CHAIN_KINDS`, and tokens from `normalizePayConfig(usePayrollConfigQuery())`. It does not fetch config. `HeaderWalletEntry` renders `WalletChainsButton` and `MyWalletsDrawer` inside that provider. `WalletSelectDialog` is presentational and is imported directly from `src/wallet/*`. It does not use `PayWidgetsRoot`. `useToast` stays in this app and renders `Toast` from `@stableflow/pay-ui/toast`.
 
-Business widgets (`WalletConnect`, `RecipientAvatar`, Pay-local components) stay next to their feature.
+Business widgets (`HeaderWalletEntry`, `RecipientAvatar`, Pay-local components) stay next to their feature.
 
 When a shared component or icon changes, change it in `stableflow-pay-ui` and bump the beta here. Append a note to [CHANGELOG.md](CHANGELOG.md) when this app's usage of the package changes.

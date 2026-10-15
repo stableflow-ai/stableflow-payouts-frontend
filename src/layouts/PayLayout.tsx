@@ -3,7 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { IconMenu } from "@stableflow/pay-ui/icons/outline/menu";
 import { BrandGlow, BrandMark } from "@/components/layout/BrandMark";
 import { HeaderAccountMenu } from "@/components/layout/HeaderAccountMenu";
-import { HeaderWalletCapsule } from "@/components/layout/HeaderWalletCapsule";
+import { HeaderWalletEntry } from "@/components/layout/HeaderWalletEntry";
 import { PayFooter } from "@/components/layout/PayFooter";
 import {
   HEADER_ACCOUNT_MENU_VARIANT,
@@ -74,15 +74,7 @@ export function PayLayout() {
           <BrandMark />
         </a>
         <div className="flex justify-end items-center gap-3 flex-1">
-          <div className="min-w-0">
-            <p className="font-montserrat text-xs font-medium text-[#909090]">
-              {orgName}
-            </p>
-            <HeaderAccountMenu
-              variant={HEADER_ACCOUNT_MENU_VARIANT.Sidebar}
-              triggerLabel={HEADER_ACCOUNT_TRIGGER_LABEL.Name}
-            />
-          </div>
+          <HeaderWalletEntry />
           <button
             type="button"
             aria-label="Menu"
@@ -113,7 +105,7 @@ export function PayLayout() {
           <div className="flex items-center gap-3">
             {headerExtra}
             <div className="hidden lg:block">
-              <HeaderWalletCapsule />
+              <HeaderWalletEntry withDrawer={false} />
             </div>
           </div>
         </div>
@@ -138,6 +130,15 @@ export function PayLayout() {
         side={DRAWER_SIDE.Top}
         title=""
       >
+        <div className="mb-4 px-1">
+          <p className="font-montserrat text-xs font-medium text-[#909090]">
+            {orgName}
+          </p>
+          <HeaderAccountMenu
+            variant={HEADER_ACCOUNT_MENU_VARIANT.Sidebar}
+            triggerLabel={HEADER_ACCOUNT_TRIGGER_LABEL.Name}
+          />
+        </div>
         <PayNav onNavigate={closeMenu} />
       </Drawer>
       <CategoriesDrawer open={categoriesOpen} onClose={closeCategories} />

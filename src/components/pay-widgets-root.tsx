@@ -1,12 +1,15 @@
 import { useCallback, useMemo, type ReactNode } from "react";
 import {
+  defaultWalletKindMeta,
   normalizePayConfig,
   PayWidgetsProvider,
   type ReadBalances,
+  type WalletKindMeta,
 } from "@stableflow/pay-widgets/token-select";
+import { chainLabel, FIXED_CHAIN_KINDS } from "@/config/chains";
 import useToast from "@/hooks/use-toast";
 import { usePayrollConfigQuery } from "@/hooks/use-payroll-config";
-import { intentsTokenForSelection } from "@/stores/intents-tokens";
+import { intentsTokenForSelection, useIntentsTokensStore } from "@/stores/intents-tokens";
 import { useTokenBalancesStore } from "@/stores/token-balances";
 import { useWalletStore } from "@/stores/wallet";
 import { CHAIN_KINDS, type ChainKind } from "@/wallet";
@@ -24,6 +27,16 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
   const toast = useToast();
   const { data, isPending } = usePayrollConfigQuery();
   const tokens = useMemo(() => (data ? normalizePayConfig(data) : []), [data]);
+  const chainKindsKey = useIntentsTokensStore((state) => state.chains.map((chain) => chain.chainKind).join(","));
+  const walletKinds = useMemo(() => {
+    const next: WalletKindMeta[] = [];
+    for (const item of FIXED_CHAIN_KINDS.values()) {
+      const meta = defaultWalletKindMeta(item.chainKind);
+      if (!meta) continue;
+      next.push({ ...meta, label: chainLabel(item.chainKind) });
+    }
+    return next;
+  }, [chainKindsKey]);
 
   const accounts = useMemo(() => {
     const next = {} as Record<ChainKind, {
@@ -98,6 +111,7 @@ export function PayWidgetsRoot({ children }: { children: ReactNode }) {
     <PayWidgetsProvider
       tokens={tokens}
       loading={isPending}
+      walletKinds={walletKinds}
       wallet={{ accounts, connect: connectKind, disconnect: disconnectKind }}
       readBalances={readBalances}
       onCopyAddress={onCopyAddress}

@@ -11,7 +11,7 @@ Rules for humans and agents working in this repository. Anything committed to `s
 ## Public components
 
 - Shared, non-business UI is imported from `@stableflow/pay-ui/<name>`. Token select is imported from `@stableflow/pay-widgets/token-select`. Wallet select is imported from `@stableflow/pay-widgets/wallet-select` and may be used directly in `src/wallet/*` without `PayWidgetsRoot`. Do not add local copies under `src/components/ui/` or `src/components/token-select-dialog/`.
-- Business widgets stay next to their feature (for example `src/views/pay/components/PaySidebar.tsx`) or in a named shared folder when several features use them (`src/components/WalletConnect.tsx`).
+- Business widgets stay next to their feature (for example `src/views/pay/components/PaySidebar.tsx`) or in a named shared folder when several features use them (`src/components/layout/HeaderWalletEntry.tsx`).
 - Overlay helpers (`DESKTOP_MEDIA_QUERY`, `FLOATING_SIDE`, `useFloatingPosition`) come from `@stableflow/pay-ui/overlay`.
 - After changing how this app uses a package component, update `doc/components/<name>.md` and append an entry to `doc/components/CHANGELOG.md`.
 
