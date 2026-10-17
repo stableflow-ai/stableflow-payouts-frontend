@@ -7,10 +7,11 @@ import { getBatchBlockchains } from "@/config/chains";
 import { batchSubmit } from "@/api/payout";
 import { queryKeys } from "@/api/query-keys";
 import { usePayOriginToken } from "@/hooks/use-pay-origin-token";
+import { useWalletDrawerTarget } from "@/hooks/use-wallet-drawer-target";
 import { usePayablePayQuery, usePayablesQuery, usePayableQuoteNotificationMutation } from "@/hooks/use-payable-api";
 import { usePaymentWallet } from "@/hooks/use-payment-wallet";
 import { useTokenBalancesStore } from "@/stores/token-balances";
-import { useIntentsTokensStore } from "@/stores/intents-tokens";
+import { intentsTokenForSelection, useIntentsTokensStore } from "@/stores/intents-tokens";
 import { useAuthStore } from "@/stores/auth";
 import { notifyBatchPayoutCommitSuccess } from "@/stores/batch-payout-commit-queue";
 import {
@@ -56,6 +57,7 @@ import {
   ZCASH_BATCH_UNSUPPORTED_MESSAGE,
   ZCASH_DISABLED_BLOCKCHAINS,
 } from "../../config";
+import { payerTokenDisabledReason } from "../../wallet-drawer-target";
 import { isBatchOriginToken, isPayrollBatchExpired } from "../../batch-utils";
 import { formatQuoteErrorMessage } from "../../utils";
 import { YouPaySection } from "../YouPaySection";
@@ -89,6 +91,7 @@ export function PaymentByFormCard(props: {
   formLocked?: boolean;
   onSettled?: () => void;
   initialNetPayById?: Record<number, string>;
+  walletDrawerTarget?: boolean;
 }) {
   const {
     payable: payableProp,
@@ -96,6 +99,7 @@ export function PaymentByFormCard(props: {
     formLocked = false,
     onSettled,
     initialNetPayById,
+    walletDrawerTarget = false,
   } = props;
   const queryClient = useQueryClient();
   const toast = useToast();
@@ -166,6 +170,17 @@ export function PaymentByFormCard(props: {
     excludeBlockchains: zcashBatchDisabled ? ZCASH_DISABLED_BLOCKCHAINS : null,
     remember: false,
   });
+  useWalletDrawerTarget(walletDrawerTarget ? {
+    onSelect: (token) => {
+      const next = intentsTokenForSelection(token);
+      if (next) setOriginToken(next);
+    },
+    disabledReason: (token) => payerTokenDisabledReason(token, {
+      allowedBlockchains: batchBlockchains,
+      disabledBlockchains: zcashBatchDisabled ? ZCASH_DISABLED_BLOCKCHAINS : null,
+      disabledReason: zcashBatchDisabled ? ZCASH_BATCH_UNSUPPORTED_MESSAGE : undefined,
+    }),
+  } : null);
   const originKind: ChainKind =
     originToken?.chain.chainKind === "near"
     || originToken?.chain.chainKind === "solana"

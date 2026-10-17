@@ -34,7 +34,7 @@ export function PaymentByFormView() {
 
   return (
     <Card className="mx-auto w-full max-w-[600px] px-[30px] py-[30px]">
-      <PaymentByFormCard payable={payable} onSettled={handleSettled} />
+      <PaymentByFormCard payable={payable} onSettled={handleSettled} walletDrawerTarget />
     </Card>
   );
 }

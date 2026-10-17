@@ -64,9 +64,9 @@ src/
     how-it-works/              public marketing page
     docs/                      public user guide (`/docs`)
   components/
-    layout/                    AppHeader, HeaderAccountMenu, HeaderWalletCapsule
+    layout/                    AppHeader, HeaderAccountMenu, HeaderWalletEntry
     pay-widgets-root.tsx       PayWidgetsProvider data boundary
-    recipient-avatar/, you-pay/, WalletConnect.tsx
+    recipient-avatar/, you-pay/
     safe/                      SafeMultisigBadge (wraps MultisigBadge)
     multisig/                  MultisigBadge, PayFromSquadSection, confirm / listen toasts
   api/                         one module per domain, thin wrappers over http()

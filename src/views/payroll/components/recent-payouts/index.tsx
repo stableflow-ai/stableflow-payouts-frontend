@@ -3,7 +3,7 @@ import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
 import { IconArrowDown } from "@stableflow/pay-ui/icons/outline/arrow-down";
 import { IconLoading } from "@stableflow/pay-ui/icons/outline/loading";
 import { Skeleton } from "@stableflow/pay-ui/skeleton";
-import { IconPayoutFailed, IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
+import { IconPayoutPaid, IconPayoutPending } from "@stableflow/pay-ui/icons/solid/payout-status";
 import { Card } from "@stableflow/pay-ui/card";
 import { chainDisplayName } from "@/config/chains";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ function StatusMark({ status }: { status: PayrollPayoutStatus }) {
     status === PAYROLL_PAYOUT_STATUS.Failed
     || status === PAYROLL_PAYOUT_STATUS.Expired
   ) {
-    return <IconPayoutFailed className={cn("size-[26px]", PAYROLL_STATUS_FAILED_CLASS)} />;
+    return <IconAlertCircle className={cn("size-[26px]", PAYROLL_STATUS_FAILED_CLASS)} />;
   }
   if (status === PAYROLL_PAYOUT_STATUS.Paid) {
     return <IconPayoutPaid className={cn("size-[26px]", PAYROLL_STATUS_PAID_CLASS)} />;

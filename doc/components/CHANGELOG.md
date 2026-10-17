@@ -4,6 +4,14 @@ Newest first. Add an entry when this app's usage of `@stableflow/pay-ui`, `@stab
 
 Format: one `## YYYY-MM-DD` heading per day, one `- **ComponentName:** what changed` bullet per component.
 
+## 2026-10-15
+
+- **MyWalletsDrawer / WalletChainsButton:** `PayWidgetsRoot` passes `walletKinds`. `HeaderWalletEntry` opens My Wallets from the Pay shell. `/pay`, `/pay/form`, and `/pay/request` register a drawer target. The Payment wallet dialog and header capsule are removed.
+
+## 2026-10-14
+
+- **WalletSelectDialog:** Solana, Tron, Zcash, and NEAR pickers render `@stableflow/pay-widgets/wallet-select` directly from `src/wallet/*`. The dialog does not go through `PayWidgetsRoot`. EVM uses RainbowKit `modalSize="compact"`.
+
 ## 2026-10-12
 
 - **TokenSelectDialog:** `PayWidgetsRoot` passes tokens from `normalizePayConfig(usePayrollConfigQuery())` and `loading` from `isPending`. The widget no longer fetches payroll config. `popularTokens` is removed. The picker is a chain selector: Recently Used cards, Your Tokens, Recent Searches, and Trends Token.

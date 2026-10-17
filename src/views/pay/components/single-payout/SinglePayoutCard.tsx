@@ -4,6 +4,7 @@ import { Button } from "@stableflow/pay-ui/button";
 import { InputNumber } from "@stableflow/pay-ui/input-number";
 import { Tooltip } from "@stableflow/pay-ui/tooltip";
 import { TokenSelectDialog } from "@stableflow/pay-widgets/token-select";
+import { useWalletDrawerTarget } from "@/hooks/use-wallet-drawer-target";
 import { useCreatePayrollPaymentMutation } from "@/hooks/use-single-payout-api";
 import { useContacts, type Contact } from "@/hooks/use-contacts";
 import { useOrganizationQuery } from "@/hooks/use-organization-api";
@@ -23,6 +24,7 @@ import { NotifyRecipientBar } from "../NotifyRecipientBar";
 import { TokenSelectButton } from "../TokenSelectButton";
 import { TEAM_PAGE_SIZE, TEAM_SEARCH_DEBOUNCE_MS } from "../team/config";
 import { AMOUNT_MAX_DECIMALS, MEMO_MAX_LENGTH, PAYOUT_RESULT_PATH } from "../../config";
+import { receiverTokenDisabledReason } from "../../wallet-drawer-target";
 import {
   detectAddressChainKind,
   defaultDestToken,
@@ -52,8 +54,9 @@ function useDebouncedValue<T>(value: T, delayMs: number): T {
 export function SinglePayoutCard(props: {
   initialRecipient?: { id?: number; name: string; address: string; email?: string | null };
   memberWallets?: TeamMemberWallets;
+  walletDrawerTarget?: boolean;
 }) {
-  const { initialRecipient, memberWallets } = props;
+  const { initialRecipient, memberWallets, walletDrawerTarget = false } = props;
   const toast = useToast();
   const user = useAuthStore((state) => state.user);
   const employee = isUser(user);
@@ -116,6 +119,20 @@ export function SinglePayoutCard(props: {
       : null;
   const destLockChainKind = detectAddressChainKind(addressInput);
   const destinationAddress = destLockChainKind ? addressInput.trim() : "";
+  useWalletDrawerTarget(walletDrawerTarget ? {
+    onSelect: (token) => {
+      const next = intentsTokenForSelection(token);
+      if (!next) return;
+      setDestToken(next);
+      if (memberWallets) {
+        setAddressInput(walletForChainKind(memberWallets, next.chain.chainKind));
+      }
+    },
+    disabledReason: (token) => receiverTokenDisabledReason(
+      token,
+      memberWallets ? null : destLockChainKind,
+    ),
+  } : null);
   const amountDecimals = parsePositiveDecimal(amount, AMOUNT_MAX_DECIMALS);
   const recipientQuery = addressInput.trim();
   const recipientIsWallet = Boolean(detectAddressChainKind(recipientQuery));

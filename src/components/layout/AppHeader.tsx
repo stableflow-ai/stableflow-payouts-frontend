@@ -2,7 +2,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import { LayoutGroup, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { HeaderAccountMenu } from "./HeaderAccountMenu";
-import { HeaderWalletCapsule } from "./HeaderWalletCapsule";
 import { HEADER_NAV_ACTIVE_COLOR, HEADER_NAV_ITEMS, isHeaderNavActive } from "./config";
 
 function HeaderNav({ className, cursorId }: { className?: string; cursorId: string }) {
@@ -54,7 +53,6 @@ export function AppHeader() {
           className="hidden h-full min-w-0 flex-1 items-center md:flex"
         />
         <div className="ml-auto flex items-center gap-2.5">
-          <HeaderWalletCapsule />
           <HeaderAccountMenu />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { IconFieldError } from "@stableflow/pay-ui/icons/solid/field-error";
+import { IconAlertCircle } from "@stableflow/pay-ui/icons/solid/alert-circle";
 import { Button } from "@stableflow/pay-ui/button";
 import { Dialog } from "@stableflow/pay-ui/dialog";
 import { cn } from "@/lib/utils";
@@ -253,7 +253,7 @@ function WalletField(props: {
           onChange={(event) => onChange(event.target.value)}
         />
         {error ? (
-          <IconFieldError
+          <IconAlertCircle
             className="pointer-events-none absolute top-1/2 right-3 size-3 -translate-y-1/2 text-[#ff5656]"
           />
         ) : null}
